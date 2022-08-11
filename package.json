@@ -6,9 +6,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sanity/cli": "^2.30.3",
+    "@sanity/client": "^3.3.3",
+    "@sanity/image-url": "^1.0.1",
+    "bootstrap": "^5.2.0",
     "next": "latest",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "18.1.0",
+    "react-icons": "^4.4.0",
+    "react-parallax-tilt": "^1.7.51"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
