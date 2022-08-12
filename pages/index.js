@@ -29,7 +29,7 @@ export default function  Home ({banner,products})
             oldprice={banner.oldprice}
             newprice={banner.newprice}
             image={banner.image}
-            slug={banner.slug}
+            slug={banner.slug.current}
             
             />))
           

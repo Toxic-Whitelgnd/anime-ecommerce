@@ -4,8 +4,10 @@ import img2 from "../../images/tshirt/akajacket2.png"
 import Image from "next/image"
 import Button from 'react-bootstrap/Button';
 import Tilt from 'react-parallax-tilt';
+import {useRouter} from "next/router"
 
 export default function Banner_Product({sale,name,captions,oldprice,newprice,key,image1,slug}) {
+    const router = useRouter();
   return (
     
     <div  className='bg-black   h-auto m-4 border-2  border-stone-500 rounded-xl'>
@@ -31,7 +33,7 @@ export default function Banner_Product({sale,name,captions,oldprice,newprice,key
                 <h5 className='text-red-500'>Buy for : ₹ <del className='text-red-200'>{oldprice}</del> - ₹<span className=' text-red-700'>{newprice}</span></h5>
             </div>
             <div className='mt-4'>
-            <Button variant="danger">Buy Now</Button>
+            <Button onClick={()=> router.push(`bannersales/${slug}`)} variant="danger">Buy Now</Button>
             </div>
         </div>
 

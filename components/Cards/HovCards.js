@@ -25,7 +25,7 @@ export default function HovCards({pimage,name,brand,price,slug}) {
                     <h6>Price:₹ {price}</h6>
                 </div>
                 <Button onClick={()=>{
-                    router.push(`/jackets/${slug}`)
+                    router.push(`/product/${slug}`)
                 }}  variant="dark">View</Button>
             </div>
         </div>
