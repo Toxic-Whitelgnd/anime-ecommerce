@@ -13,7 +13,8 @@ import Aot from './Aot'
 import Shoe from './Shoe'
 import Jackets from './Jackets'
 import Products from './Products'
-import dogs from './dogs'
+import Collection  from './Collection'
+
 
 
 export default createSchema({
@@ -23,6 +24,6 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     Banner,Products,Tshirt,DemonSlayer,OnePiece,Aot,
-   Naruto,Shoe,Jackets,dogs
+   Naruto,Shoe,Jackets,Collection
   ]),
 })

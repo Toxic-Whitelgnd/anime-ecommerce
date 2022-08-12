@@ -7,6 +7,7 @@ import {Client} from '../lib/client';
 import HovCards from '../components/Cards/HovCards';
 // import {SSRProvider} from 'react-aria';
 
+
 export default function  Home ({banner,products})
  {
   return (
@@ -35,9 +36,9 @@ export default function  Home ({banner,products})
 
         }
         <div>
-            <h3>Browse your Products</h3>
+            <h3>Browse Our top Selling Products</h3>
         </div> 
-        <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#ddebed]">
+        <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]">
         {
           
           products.map(product => (
@@ -47,6 +48,7 @@ export default function  Home ({banner,products})
             pimage={product.image}
             brand={product.brand}
             price={product.price}
+            slug={product.slug.current}
             />
             
             ))
