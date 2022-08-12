@@ -3,7 +3,7 @@ import {useRouter} from "next/router"
 import { urlFor } from '../../lib/client';
 import { Button } from 'bootstrap';
 
-export default function CollectionCard({name,pimage,products,paths}) {
+export default function CollectionCard({name,pimage,products,slug}) {
     const router = useRouter();
   return (
     <div>
@@ -17,7 +17,7 @@ export default function CollectionCard({name,pimage,products,paths}) {
          <h6 className="m-2">{products}</h6>
          <div className='mt-2'>
           <Button onClick={()=>{
-            router.push(`/collections/${paths}`)
+            router.push(`/collections/${slug}`)
           }} className="m-6" variant="secondary">Explore</Button>
          </div>
       </div>
