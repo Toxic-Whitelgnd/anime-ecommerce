@@ -19,6 +19,7 @@ export default function Naruto({naruto}) {
               price={ds.price}
               pimage={ds.image}
               slug={ds.slug.current}
+              product={ds}
             />
 
           

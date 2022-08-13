@@ -49,6 +49,8 @@ export default function  Home ({banner,products})
             brand={product.brand}
             price={product.price}
             slug={product.slug.current}
+            product={product}
+            key = {product._id}
             />
             
             ))

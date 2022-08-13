@@ -20,6 +20,7 @@ export default function Tshirts({tshirts}) {
             price={tshirt.price}
             brand={tshirt.brand}
             slug={tshirt.slug.current}
+            product={tshirt}
             />
         ))
     }

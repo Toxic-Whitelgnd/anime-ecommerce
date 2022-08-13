@@ -15,7 +15,7 @@ import { isRegularExpressionLiteral } from 'typescript';
 
 export default function CartItems() {
     const cartRef = useRef();
-    const {totalprice,totalQty,cartItem,setShowcart,qty} = useStateContext();
+    const {totalprice,totalQty,cartItem,setShowcart,qty,onRemove,toggleCartItemQuantity} = useStateContext();
   return (
     <DefaultLayout>
         <div className="" ref={cartRef}>
@@ -49,28 +49,43 @@ export default function CartItems() {
                             <div className="mt-4">
                                 <button type="button" onClick={()=>{
                                 console.log("pressed on plus");  
-                                //   decqty();
+                                toggleCartItemQuantity(item._id,'dec');
                                 }} className="btn btn-danger mr-4">-</button>
                                 <span className="text-xl   border-2 pt-1 pb-1 pr-2 pl-2">
-                                {qty}
+                                {item.quantity}
                                 </span>
                                 <button type="button"onClick={()=>{
                                 console.log("pressed on minus"); 
-                                //   incqty() ;
+                                toggleCartItemQuantity(item._id,'inc');
                                 }} className="btn btn-success ml-4">+</button>
                             </div>
                         </div> 
-                        <h4 className='ml-40'>x</h4>
+                        <div className='mt-6 ml-40' onClick={()=> onRemove(item) } ><TiDeleteOutline className='text-red-500 text-xl' /></div>
                 </div>
             </div>
 
     
-        </div>
+            </div>
 
                         </div>
                         </>
                     ))
                 }
+            <div>
+                {
+                    cartItem.length >=1 && (
+                        <div>
+                            <hr></hr>
+                            <div className="flex flex-wrap justify-center text-center">
+                                <h3>Total:₹ {totalprice}</h3>
+                            </div>
+                            <div className="flex flex-wrap justify-center text-center mt-4"><button className="btn btn-primary"> Buy Now </button></div>
+                        </div>
+                    )
+                }
+
+
+            </div>
 
             </div>
         </div>

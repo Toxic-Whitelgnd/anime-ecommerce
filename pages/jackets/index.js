@@ -22,6 +22,7 @@ export default function Jackets({jackets}) {
                 price={jacket.price}
                 pimage={jacket.image}
                 slug={jacket.slug.current}
+                product={jacket}
                 />
             )
             )

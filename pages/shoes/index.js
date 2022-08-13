@@ -21,6 +21,7 @@ export default function Shoes({shoes}) {
                 price={shoe.price}
                 brand={shoe.brand}
                 slug={shoe.slug.current}
+                product={shoe}
                 />
             ))
         }
