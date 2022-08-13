@@ -9,30 +9,42 @@ import toast from "react-hot-toast";
 
 import { useStateContext } from '../../context/StateConTexT';
 import { urlFor } from '../../lib/client';
-import {getStripe} from "../../lib/getStripe"
+import getStripe from "../../lib/getStripe"
 
 export default function CartItems() {
     const cartRef = useRef();
     const {totalprice,totalQty,cartItem,setShowcart,qty,onRemove,toggleCartItemQuantity} = useStateContext();
 
     const handleCheckOut = async ()=> {
+
+        console.log('came to func');
         const stripe = await getStripe();
+
+        console.log('came to response');
+
+        var str = JSON.stringify(cartItem);
+        var par = JSON.parse(str);
 
         const response = await fetch('/api/Stripe',{
             method:'POST',
             headers: {
-                'content-type':'application/json'
+                'Content-type':'application/json'
             },
-            body: JSON.stringify(cartItem),
+            body:  JSON.stringify(cartItem),
         });
+
+        console.log('calling response');
 
         if(response.statusCode === 500) return;
 
+
         const data = await response.json();
+
+        console.log("sessionid mfff:"+data);
 
         toast.loading("redirectiong to paymentpage ");
 
-        stripe.redirectToCheckout({sessionId: data.id});
+        // stripe.redirectToCheckout({ sessionId: data.id});
 
     }
 
@@ -100,7 +112,7 @@ export default function CartItems() {
                                 <h3>Total:₹ {totalprice}</h3>
                             </div>
                             <div className="flex flex-wrap justify-center text-center mt-4">
-                                <button className="btn btn-primary" onClick={()=> handleCheckOut}> Buy Now </button>
+                                <button className="btn btn-primary" onClick={ handleCheckOut}> Buy Now </button>
                                 </div>
                         </div>
                     )
