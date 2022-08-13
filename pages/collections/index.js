@@ -4,11 +4,16 @@ import {Client, urlFor} from "../../lib/client"
 import HovCards from "../../components/Cards/HovCards"
 import { Button } from 'react-bootstrap'
 import {useRouter} from "next/router"
+import Head from 'next/head'
 
 export default function Anime_Colletion({collec}) {
     const router = useRouter();
   return (
     <DefaultLayout>
+      <Head>
+        <title>Collections</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         <div>
             <h1>Browse your Favourite Anime Collection</h1>
         </div>

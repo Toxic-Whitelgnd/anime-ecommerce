@@ -1,5 +1,5 @@
 import DefaultLayout from '../../Layout/Layout'
-
+import Head from "next/head"
 
 import React,{useRef} from 'react';
 import Link from "next/link";
@@ -44,12 +44,17 @@ export default function CartItems() {
 
         toast.loading("redirectiong to paymentpage ");
 
-        // stripe.redirectToCheckout({ sessionId: data.id});
+        stripe.redirectToCheckout({ sessionId: data.id});
 
     }
 
   return (
+    
     <DefaultLayout>
+        <Head>
+        <title>Carts</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         <div className="" ref={cartRef}>
             <h2>Your Cart Items {totalQty}</h2>
             {

@@ -2,10 +2,15 @@ import React from 'react'
 import HovCards from '../../../components/Cards/HovCards'
 import DefaultLayout from '../../../Layout/Layout'
 import { Client } from '../../../lib/client'
+import Head from 'next/head'
 
 export default function Naruto({naruto}) {
   return (
      <DefaultLayout>
+      <Head>
+        <title>Naruto</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <div>
       <h1>Explore the Naruto Collections</h1>
     </div>

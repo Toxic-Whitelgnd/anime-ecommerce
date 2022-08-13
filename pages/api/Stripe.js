@@ -24,8 +24,9 @@ export default async function handler(req, res) {
         ],
         line_items: req.body.map((item)=>{
             const img = item.image.asset._ref;
+            console.log(img);
             const NewImg = img.replace('image-','https://cdn.sanity.io/images/fqvhx5pe/production/').replace('-webp','.webp');
-
+            console.log(NewImg);
             return {
                 price_data:{
                     currency:'inr',
@@ -33,7 +34,7 @@ export default async function handler(req, res) {
                         name:item.name,
                         images:[NewImg],
                     },
-                    unit_amount: item.price,
+                    unit_amount: item.price * 100,
                 },
                 adjustable_quantity:{
                     enabled:true,

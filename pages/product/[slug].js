@@ -3,7 +3,7 @@ import {Client,urlFor} from '../../lib/client'
 import DefaultLayout from '../../Layout/Layout'
 import {RiStarSmileFill} from "react-icons/ri" 
 import {useStateContext} from "../../context/StateConTexT";
-
+import Head from 'next/head'
 
 const ProductDetails = ({product}) => {
     
@@ -15,6 +15,10 @@ const ProductDetails = ({product}) => {
     
     <>
     <DefaultLayout>
+    <Head>
+        <title>Product Details</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <div>
         <h2>ProductDetails</h2>
     </div>

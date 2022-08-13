@@ -6,6 +6,10 @@ import { Client } from '../../../lib/client'
 export default function DemonSlayer({demonslayers}) {
   return (
     <DefaultLayout>
+      <Head>
+        <title>Demon Slayer</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         <div>
           <h1>Explore the Demon-Slayer Collections</h1>
         </div>

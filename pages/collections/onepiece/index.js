@@ -2,10 +2,16 @@ import React from 'react'
 import HovCards from '../../../components/Cards/HovCards'
 import DefaultLayout from '../../../Layout/Layout'
 import { Client } from '../../../lib/client'
+import Head from 'next/head'
+
 
 export default function OnePiece({onepiece}) {
   return (
     <DefaultLayout>
+      <Head>
+        <title>One Piece</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <div>
       <h1>Explore the OnePiece Collections</h1>
     </div>

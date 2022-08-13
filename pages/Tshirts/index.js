@@ -2,12 +2,16 @@ import React from 'react'
 import DefaultLayout from '../../Layout/Layout'
 import {Client} from "../../lib/client"
 import HovCards from "../../components/Cards/HovCards"
-
+import Head from 'next/head'
 
 
 export default function Tshirts({tshirts}) {
   return (
     <DefaultLayout>
+      <Head>
+        <title>Tshirts</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <div>
         <h1>Browse our Tshirts 👕</h1>
     </div>
