@@ -1,6 +1,5 @@
 import DefaultLayout from '../../Layout/Layout'
-import img1 from "../../images/jackets/jacket2.png"
-import Image from "next/image"
+
 
 import React,{useRef} from 'react';
 import Link from "next/link";
@@ -10,12 +9,33 @@ import toast from "react-hot-toast";
 
 import { useStateContext } from '../../context/StateConTexT';
 import { urlFor } from '../../lib/client';
-import { Button } from 'bootstrap';
-import { isRegularExpressionLiteral } from 'typescript';
+import {getStripe} from "../../lib/getStripe"
 
 export default function CartItems() {
     const cartRef = useRef();
     const {totalprice,totalQty,cartItem,setShowcart,qty,onRemove,toggleCartItemQuantity} = useStateContext();
+
+    const handleCheckOut = async ()=> {
+        const stripe = await getStripe();
+
+        const response = await fetch('/api/Stripe',{
+            method:'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(cartItem),
+        });
+
+        if(response.statusCode === 500) return;
+
+        const data = await response.json();
+
+        toast.loading("redirectiong to paymentpage ");
+
+        stripe.redirectToCheckout({sessionId: data.id});
+
+    }
+
   return (
     <DefaultLayout>
         <div className="" ref={cartRef}>
@@ -79,7 +99,9 @@ export default function CartItems() {
                             <div className="flex flex-wrap justify-center text-center">
                                 <h3>Total:₹ {totalprice}</h3>
                             </div>
-                            <div className="flex flex-wrap justify-center text-center mt-4"><button className="btn btn-primary"> Buy Now </button></div>
+                            <div className="flex flex-wrap justify-center text-center mt-4">
+                                <button className="btn btn-primary" onClick={()=> handleCheckOut}> Buy Now </button>
+                                </div>
                         </div>
                     )
                 }
