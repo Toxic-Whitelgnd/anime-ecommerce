@@ -30,7 +30,8 @@ export default function  Home ({banner,products})
             captions={banner.captions}
             oldprice={banner.oldprice}
             newprice={banner.newprice}
-            image={banner.image}
+            image1={banner.image[0]}
+            image2={banner.image[1]}
             slug={banner.slug.current}
             
             />))

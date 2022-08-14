@@ -40,8 +40,8 @@ export default function NavBar() {
             </NavDropdown>
           </Nav>
           <Nav className="bg-[#212529] p-2">
-            <Nav.Link href="#deets">AboutUs</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link href="/aboutus">AboutUs</Nav.Link>
+            <Nav.Link eventKey={2} href="/aboutus">
                 MSOB
             </Nav.Link>
             

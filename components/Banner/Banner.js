@@ -5,8 +5,9 @@ import Image from "next/image"
 import Button from 'react-bootstrap/Button';
 import Tilt from 'react-parallax-tilt';
 import {useRouter} from "next/router"
+import { urlFor } from '../../lib/client';
 
-export default function Banner_Product({sale,name,captions,oldprice,newprice,key,image1,slug}) {
+export default function Banner_Product({sale,name,captions,oldprice,newprice,image2,image1,slug}) {
     const router = useRouter();
   return (
     
@@ -18,13 +19,13 @@ export default function Banner_Product({sale,name,captions,oldprice,newprice,key
             
             <div className="mb-8 duration-500 hover:scale-150"> 
                 <Tilt>
-                <Image src={img1} alt={"sdf sdfd "} width={300} height={350} />
+                <img src={urlFor(image1)} alt={"sdf sdfd "} width={300} height={350} />
                 </Tilt>
             </div>
                 
             <div className="mb-8 duration-500 hover:scale-125"> 
                 <Tilt>
-                <Image src={img2} alt={"sdf sdfd "} width={300} height={350} />
+                <img src={urlFor(image2)} alt={"sdf sdfd "} width={300} height={350} />
                 </Tilt>
             </div>
             </div>
@@ -33,7 +34,7 @@ export default function Banner_Product({sale,name,captions,oldprice,newprice,key
                 <h5 className='text-red-500'>Buy for : ₹ <del className='text-red-200'>{oldprice}</del> - ₹<span className=' text-red-700'>{newprice}</span></h5>
             </div>
             <div className='mt-4'>
-            <Button onClick={()=> router.push(`bannersales/${slug}`)} variant="danger">Buy Now</Button>
+            <Button onClick={()=> router.push(`product/${slug}`)} variant="danger">Buy Now</Button>
             </div>
         </div>
 
