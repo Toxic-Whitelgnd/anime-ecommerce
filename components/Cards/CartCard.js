@@ -21,7 +21,7 @@ export default function CartCard({name,price,pimage,product,quantity}) {
         <div>
         <img src={urlFor(pimage)}  alt="cart-imag" width={250} height={250} />
         </div>
-        <Card style={{ width: '18rem',border: '1px solid' ,height: '14rem' ,backgroundColor:'#fa948c'}}>
+        <Card style={{ width: '20rem',border: '1px solid' ,height: '14rem' ,backgroundColor:'#fa948c'}}>
             <Card.Body>
                 <Card.Title className="text-3xl capitalize"><h3>{name}</h3></Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Price info</Card.Subtitle>

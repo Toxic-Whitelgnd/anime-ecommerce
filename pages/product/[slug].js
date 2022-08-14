@@ -30,9 +30,10 @@ const ProductDetails = ({product}) => {
            <div className="md:container mt-2 ">
             <h3 className="capitalize">{name}</h3>
            </div>
-           <div className="flex">
+           <div className="md:flex sm:block">
             <img  src={urlFor(image)} alt="dog-pics" width={660} height={500} />
-            <div className="block ml-7">
+            <div className="sm:flex flex-wrap">
+            <div className="md:block ml-7  ">
                 <h5 className="text-3xl capitalize">{type}</h5>
                 <h5 className="text-3xl capitalize">{brand}</h5>
                 <p className="text-xl italic capitalize">{details}</p>
@@ -61,11 +62,13 @@ const ProductDetails = ({product}) => {
                     }} className="btn btn-warning mr-4">Add-to-cart</button>
                     <button type="button" onClick={()=>{
                       console.log("pressed on buynow");  
+                      console.log(product); 
                       onADDtocart(product,qty);
                        
                       router.push('/carts')
                     }} className="btn btn-info">Buy-Now</button>
                 </div>
+            </div>
             </div>
            </div>
         </div>

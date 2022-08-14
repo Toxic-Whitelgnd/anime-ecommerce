@@ -39,7 +39,7 @@ export default function  Home ({banner,products})
             <h3>Browse Our top Selling Products</h3>
         </div> 
         {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}
-        <div className="bg-[#eb8a8a] flex flex-wrap m-3 ">
+        <div className="bg-[#eb8a8a] flex justify-center flex-wrap m-3 ">
         {
           
           products.map(product => (
