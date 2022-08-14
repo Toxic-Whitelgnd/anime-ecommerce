@@ -14,6 +14,7 @@ export default function Anime_Colletion({collec}) {
         <title>Collections</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className='mt-24'></div>
         <div>
             <h1 className='z-auto'>Browse your Favourite Anime Collection</h1>
         </div>
@@ -24,12 +25,12 @@ export default function Anime_Colletion({collec}) {
             collec.map(c =>(
                 <>
                 {/* <div className="flex justify-center text-center"> */}
-                <div className="bg-[#5DBE9B] sm:w-96 h-36  md:h-40 m-6 w-80 border-2   border-stone-500 rounded-xl ">
+                <div className="bg-[#5DBE9B] sm:w-96 h-42  md:h-40 m-6 w-80 border-2   border-stone-500 rounded-xl ">
                     <h3 className="m-2"><span className='text-red-700'>{c.name}</span> Collections</h3>
                     <div className='float-right realtive -mt-32 -mr-36' >
                     <img src={urlFor(c.image)} alt="colletion-images"  width={250} height={250} />
                     </div>
-                    <h6 className="m-2">{c.products}</h6>
+                    <h6 className="m-2 flex-wrap-reverse">{c.products}</h6>
                     
                     <Button onClick={()=>{
                         router.push(`/collections/${c.slug.current}`)

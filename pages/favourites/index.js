@@ -12,6 +12,7 @@ export default function Favourites_item() {
   return (
     <div>
         <>
+        <div className='mt-24'></div>
             <div>
             <h1>Favourite Items (<span className='text-red-500'>{favqty}</span> Items)</h1>
                 {

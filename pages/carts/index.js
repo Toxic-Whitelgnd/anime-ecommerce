@@ -56,6 +56,7 @@ export default function CartItems() {
         <title>Carts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className='mt-24'></div>
         <div className="bg-[#eb8a8a]" ref={cartRef}>
             <h2>Your Cart (<span className='text-red-500'>{totalQty}</span> Items) </h2>
             {
@@ -77,7 +78,7 @@ export default function CartItems() {
                         <>
                         <hr className="border-2"></hr>
                         <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
-                        
+                        <h1>{item.name}</h1>
                                 <CartCard 
                                 name={item.name}
                                 price={item.price}

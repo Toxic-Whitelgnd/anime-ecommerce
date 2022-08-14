@@ -22,8 +22,9 @@ const ProductDetails = ({product}) => {
         <title>Product Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className='mt-24'></div>
     <div>
-        <h2>ProductDetails</h2>
+        <h2>Product Details</h2>
     </div>
     <div>
     <div className="bg-[#ddebed] p-2">
