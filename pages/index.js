@@ -18,7 +18,7 @@ export default function  Home ({banner,products})
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <DefaultLayout>
+      <>
         {
           banner.map(banner => (
           
@@ -38,7 +38,8 @@ export default function  Home ({banner,products})
         <div>
             <h3>Browse Our top Selling Products</h3>
         </div> 
-        <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]">
+        {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}
+        <div className="bg-[#eb8a8a] flex flex-wrap m-3 ">
         {
           
           products.map(product => (
@@ -59,7 +60,7 @@ export default function  Home ({banner,products})
         </div>
         
         
-      </DefaultLayout>
+      </>
       
     
     {/* </SSRProvider> */}

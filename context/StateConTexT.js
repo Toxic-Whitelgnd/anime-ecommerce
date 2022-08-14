@@ -11,6 +11,10 @@ export const StateConTexT = ({ children}) =>{
     const [totalQty, setTotalQty] = useState(0);
     const [qty, setQty] = useState(1);
 
+    // fav items
+    const [Favitem,setFavitem] = useState([]);
+    const [favqty, setFavqty] = useState(0);
+
     let foundproduct;
     let index;
 
@@ -59,7 +63,26 @@ export const StateConTexT = ({ children}) =>{
             toast.success(`${product.name} added to the cart`);
         }  
 
-    
+    }
+    // favitems
+    const onADDFavitem = (product)=>{
+        const checkFavIteminList = Favitem.find((item)=> item._id === product._id);
+
+        if (checkFavIteminList) {
+            toast.error("Item is already in FavItem List");
+        }
+        else{
+            setFavitem([...Favitem,{...product}]);
+            setFavqty((prevfavqty)=> prevfavqty+1);
+
+            toast.success(`${product.name} added to FavList`)
+        }
+    }
+
+    const onRemoveFav = (product)=>{
+        const newFavItem = Favitem.filter((item)=> item._id !== product._id);
+        setFavitem(newFavItem);
+        setFavqty((prevfavqty)=> prevfavqty-1)
     }
 
     // cartitemquantity
@@ -109,7 +132,11 @@ export const StateConTexT = ({ children}) =>{
               onADDtocart,
               setShowcart,
               toggleCartItemQuantity,
-              onRemove
+              onRemove,
+              Favitem,
+              onADDFavitem,
+              favqty,
+              onRemoveFav
             }}
         >
             {children}

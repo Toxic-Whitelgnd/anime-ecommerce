@@ -4,17 +4,20 @@ import DefaultLayout from '../../Layout/Layout'
 import {RiStarSmileFill} from "react-icons/ri" 
 import {useStateContext} from "../../context/StateConTexT";
 import Head from 'next/head'
+import {useRouter } from "next/router";
+
 
 const ProductDetails = ({product}) => {
     
     const {name,details,type,image,ratings,brand,price} = product;
     const [index,setIndex] = useState(0);
     const {decqty,incqty,qty,onADDtocart} = useStateContext();
+    const router = useRouter();
 
   return (
     
     <>
-    <DefaultLayout>
+    <>
     <Head>
         <title>Product Details</title>
         <link rel="icon" href="/favicon.ico" />
@@ -58,6 +61,9 @@ const ProductDetails = ({product}) => {
                     }} className="btn btn-warning mr-4">Add-to-cart</button>
                     <button type="button" onClick={()=>{
                       console.log("pressed on buynow");  
+                      onADDtocart(product,qty);
+                       
+                      router.push('/carts')
                     }} className="btn btn-info">Buy-Now</button>
                 </div>
             </div>
@@ -65,7 +71,7 @@ const ProductDetails = ({product}) => {
         </div>
 
     </div>
-    </DefaultLayout>
+    </>
     
     </>
   )

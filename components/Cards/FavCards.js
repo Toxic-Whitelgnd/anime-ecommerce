@@ -4,11 +4,13 @@ import Tilt from 'react-parallax-tilt';
 import { urlFor } from '../../lib/client';
 import { Button } from 'react-bootstrap';
 import {useRouter} from "next/router"
-import { MdFavorite, MdShoppingCart } from "react-icons/md";
+import {MdShoppingCart } from "react-icons/md";
+import {BiTrash} from "react-icons/bi"
 import { useStateContext } from '../../context/StateConTexT';
 
-export default function HovCards({pimage,name,brand,price,slug,key,product}) {
-    const {onADDtocart,qty,favqty,onADDFavitem} = useStateContext();
+
+export default function FavCards({pimage,name,brand,price,slug,key,product}) {
+    const {onADDtocart,qty,onRemoveFav} = useStateContext();
     const router = useRouter();
   return (
         <>
@@ -22,17 +24,15 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
                     </Tilt>
                 </div>
                 <div>
-                    <h3 className="text-red-600 capitalize">{name}</h3>
-                    <p className='capitalize'>Brand: {brand}</p>
+                    <h3 className="text-red-600">{name}</h3>
+                    <p>Brand: {brand}</p>
                     <h6>Price:₹ {price}</h6>
                 </div>
                 <div>
 
                 <a onClick={()=> onADDtocart(product,qty)} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
-                <a onClick={()=> {
-                    console.log("Successfully");
-                    onADDFavitem(product);
-                } } className="btn btn-danger mr-4 "><MdFavorite /></a>
+                <a onClick={()=> onRemoveFav(product)} className="btn btn-danger  mr-2"><BiTrash  /></a>
+               
                <Button onClick={()=>{
                     router.push(`/product/${slug}`)
                 }}  variant="dark">View</Button>

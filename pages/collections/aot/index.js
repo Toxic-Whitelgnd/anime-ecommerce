@@ -6,7 +6,7 @@ import Head from 'next/head'
 
 export default function AOT({aot}) {
   return (
-    <DefaultLayout>
+    <>
       <Head>
         <title>AOT</title>
         <link rel="icon" href="/favicon.ico" />
@@ -15,7 +15,8 @@ export default function AOT({aot}) {
       <h1>Explore the AOT Collections</h1>
     </div>
     <>
-    <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]">
+     {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}
+     <div className="bg-[#eb8a8a] flex justify-center flex-wrap m-3 ">
       {
           aot.map(ds =>(
             <HovCards
@@ -34,7 +35,7 @@ export default function AOT({aot}) {
     </div>
     </>
 
-</DefaultLayout>
+</>
 )
 }
 

@@ -9,7 +9,7 @@ import Head from 'next/head'
 export default function Anime_Colletion({collec}) {
     const router = useRouter();
   return (
-    <DefaultLayout>
+    <>
       <Head>
         <title>Collections</title>
         <link rel="icon" href="/favicon.ico" />
@@ -42,7 +42,7 @@ export default function Anime_Colletion({collec}) {
         </div>
         </>
 
-    </DefaultLayout>
+    </>
     
   )
 }

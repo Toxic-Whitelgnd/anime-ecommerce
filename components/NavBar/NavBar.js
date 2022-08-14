@@ -15,13 +15,13 @@ import { useStateContext } from '../../context/StateConTexT';
 export default function NavBar() {
 
   const router = useRouter();
-  const {showcart , setShowcart , totalQty} = useStateContext();
+  const {favqty, setShowcart , totalQty} = useStateContext();
 
   return (
    <div>
    <Navbar collapseOnSelect className="h-20" expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand  href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand  href="/">AkaStores</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -45,8 +45,8 @@ export default function NavBar() {
                 MSOB
             </Nav.Link>
           </Nav>
-          <button type="button" className="btn btn-danger mr-3 ml-2">
-              <MdFavorite className="text-3xl " /> <span className="badge badge-light">0</span>
+          <button type="button" className="btn btn-danger mr-3 ml-2" onClick={()=> router.push('/favourites') }>
+              <MdFavorite className="text-3xl " /> <span className="badge badge-light">{favqty}</span>
             </button>
             <button type="button" onClick={() =>{
                 router.push('/carts');

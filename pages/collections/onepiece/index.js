@@ -7,7 +7,7 @@ import Head from 'next/head'
 
 export default function OnePiece({onepiece}) {
   return (
-    <DefaultLayout>
+    <>
       <Head>
         <title>One Piece</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,7 +16,8 @@ export default function OnePiece({onepiece}) {
       <h1>Explore the OnePiece Collections</h1>
     </div>
     <>
-    <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]">
+     {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}
+     <div className="bg-[#eb8a8a] flex justify-center flex-wrap m-3 ">
       {
           onepiece.map(ds =>(
             <HovCards
@@ -35,7 +36,7 @@ export default function OnePiece({onepiece}) {
     </div>
     </>
 
-</DefaultLayout>
+</>
 )
 }
 

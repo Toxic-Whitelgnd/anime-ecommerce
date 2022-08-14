@@ -4,12 +4,13 @@ import Head from "next/head"
 import React,{useRef} from 'react';
 import Link from "next/link";
 import {AiOutlineMinus,AiOutlinePlus,AiOutlineLeft,AiOutlineRight,AiOutlineShopping} from "react-icons/ai";
-import {TiDeleteOutline} from "react-icons/ti"
+
 import toast from "react-hot-toast";
 
 import { useStateContext } from '../../context/StateConTexT';
 import { urlFor } from '../../lib/client';
 import getStripe from "../../lib/getStripe"
+import CartCard from '../../components/Cards/CartCard';
 
 export default function CartItems() {
     const cartRef = useRef();
@@ -50,13 +51,13 @@ export default function CartItems() {
 
   return (
     
-    <DefaultLayout>
+    <>
         <Head>
         <title>Carts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <div className="" ref={cartRef}>
-            <h2>Your Cart Items {totalQty}</h2>
+        <div className="bg-[#eb8a8a]" ref={cartRef}>
+            <h2>Your Cart (<span className='text-red-500'>{totalQty}</span> Items) </h2>
             {
                 cartItem.length < 1 && (
                     <div>
@@ -74,37 +75,18 @@ export default function CartItems() {
                 {
                     cartItem.length >= 1 && cartItem.map((item)=>(
                         <>
-                        <div key={item._id}>
-                        <div className='flex flex-wrap'>
-            <div className="m-3 border-4 h-64 w-2/5">
-       
-                <div className="flex flex-wrap ">
-                        <img src={urlFor(item.image)} alt="cart" className='float-left' width={200} height={200} />
-                        <div className="block ml-6">
-                            <h3 className="mt-4">{item.name}</h3>
-                            <h3 className="mt-4">₹ {item.price}</h3>
-                            <div className="mt-4">
-                                <button type="button" onClick={()=>{
-                                console.log("pressed on plus");  
-                                toggleCartItemQuantity(item._id,'dec');
-                                }} className="btn btn-danger mr-4">-</button>
-                                <span className="text-xl   border-2 pt-1 pb-1 pr-2 pl-2">
-                                {item.quantity}
-                                </span>
-                                <button type="button"onClick={()=>{
-                                console.log("pressed on minus"); 
-                                toggleCartItemQuantity(item._id,'inc');
-                                }} className="btn btn-success ml-4">+</button>
-                            </div>
-                        </div> 
-                        <div className='mt-6 ml-40' onClick={()=> onRemove(item) } ><TiDeleteOutline className='text-red-500 text-xl' /></div>
-                </div>
-            </div>
-
-    
-            </div>
-
+                        <hr className="border-2"></hr>
+                        <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
+                        
+                                <CartCard 
+                                name={item.name}
+                                price={item.price}
+                                pimage={item.image}
+                                product={item}
+                                quantity={item.quantity}
+                                />
                         </div>
+                        
                         </>
                     ))
                 }
@@ -112,13 +94,15 @@ export default function CartItems() {
                 {
                     cartItem.length >=1 && (
                         <div>
-                            <hr></hr>
-                            <div className="flex flex-wrap justify-center text-center">
+                            <hr className="border-4"></hr>
+                            
+                            <div className="flex flex-wrap justify-center text-center mt-4">
                                 <h3>Total:₹ {totalprice}</h3>
                             </div>
-                            <div className="flex flex-wrap justify-center text-center mt-4">
+                            <div className="flex flex-wrap justify-center text-center mt-4 mb-5">
                                 <button className="btn btn-primary" onClick={ handleCheckOut}> Buy Now </button>
                                 </div>
+                            <hr className="border-4"></hr>
                         </div>
                     )
                 }
@@ -134,7 +118,7 @@ export default function CartItems() {
         
 
      </div>
-    </DefaultLayout>
+     </>
   )
 }
 
@@ -166,3 +150,29 @@ export default function CartItems() {
 
     
         </div> */}
+
+
+
+
+
+        // catrtsss orginal
+
+        // <img src={urlFor(item.image)} alt="cart" className='float-left' width={200} height={200} />
+        //                 <div className="block ml-6">
+        //                     <h3 className="mt-4">{item.name}</h3>
+        //                     <h3 className="mt-4">₹ {item.price}</h3>
+        //                     <div className="mt-4">
+        //                         <button type="button" onClick={()=>{
+        //                         console.log("pressed on plus");  
+        //                         toggleCartItemQuantity(item._id,'dec');
+        //                         }} className="btn btn-danger mr-4">-</button>
+        //                         <span className="text-xl   border-2 pt-1 pb-1 pr-2 pl-2">
+        //                         {item.quantity}
+        //                         </span>
+        //                         <button type="button"onClick={()=>{
+        //                         console.log("pressed on minus"); 
+        //                         toggleCartItemQuantity(item._id,'inc');
+        //                         }} className="btn btn-success ml-4">+</button>
+        //                     </div>
+        //                 </div> 
+        //                 <div className='mt-6 ml-40' onClick={()=> onRemove(item) } ><TiDeleteOutline className='text-red-500 text-xl' /></div>
