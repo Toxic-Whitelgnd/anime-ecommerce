@@ -16,7 +16,7 @@ export default function Anime_Colletion({collec}) {
       </Head>
       <div className='mt-24'></div>
         <div>
-            <h1 className='z-auto'>Browse your Favourite Anime Collection</h1>
+            <h1 className='z-auto font-silkscreen'>Browse your Favourite Anime Collection</h1>
         </div>
         <>
         {/* <div className="grid col-start-1 col-end-2 grid-cols-2  justify-evenly m-10 bg-[#eb8a8a]"> */}
@@ -26,15 +26,15 @@ export default function Anime_Colletion({collec}) {
                 <>
                 {/* <div className="flex justify-center text-center"> */}
                 <div className="bg-[#5DBE9B] sm:w-96 h-42  md:h-40 m-6 w-80 border-2   border-stone-500 rounded-xl ">
-                    <h3 className="m-2"><span className='text-red-700'>{c.name}</span> Collections</h3>
+                    <h3 className="m-2 font-lobster"><span className='text-red-700 font-marker'>{c.name}</span> Collections</h3>
                     <div className='float-right realtive -mt-32 -mr-36' >
                     <img src={urlFor(c.image)} alt="colletion-images"  width={250} height={250} />
                     </div>
-                    <h6 className="m-2 flex-wrap-reverse">{c.products}</h6>
+                    <h6 className="m-2 flex-wrap-reverse font-kanit">{c.products}</h6>
                     
                     <Button onClick={()=>{
                         router.push(`/collections/${c.slug.current}`)
-                    }} className="mt-2 ml-4" variant="secondary">Explore</Button>
+                    }} className="mt-2 ml-4 " variant="secondary"><span className="font-glitch">Explore</span></Button>
                    
                 </div>
                 {/* </div> */}

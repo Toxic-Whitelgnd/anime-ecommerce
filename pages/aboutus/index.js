@@ -16,12 +16,12 @@ export default function AboutUs() {
     <div className='mt-24'></div>
     <div>
       <div>
-        <h1>About AkaStores</h1>
+        <h1 className='font-marker'>About AkaStores</h1>
       </div>
       <div className='md:flex m-3'>
         <Image src={img1} alt="aka-stores" width={700} height={500} />
         <div className='md:block m-5'>
-          <p className='italic'>Nothing to tell more about the store, a store that is opened for the anime fans who can buy their favourite
+          <p className='font-dancing text-2xl'>Nothing to tell more about the store, a store that is opened for the anime fans who can buy their favourite
             anime character's Tshirt , Jackets , Hoddies and Shoes... Lorem Ipsum is simply dummy text of the printing and 
             typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.
             A Sorry request for the customers that Still more products are in production and it will be Updated in 2 weeks!
@@ -30,12 +30,12 @@ export default function AboutUs() {
         </div>
       </div>
       <div>
-        <h1>About owner</h1>
+        <h1 className="font-glitch">About owner</h1>
       </div>
       <div className='md:flex m-7'>
         <Image src={img2} alt="aka-stores" width={400} height={800} />
         <div className='md:block m-5'>
-          <p className='italic'>Nothing to tell more about me . Lorem Ipsum is simply dummy text of the printing and 
+          <p className='font-dancing text-2xl'>Nothing to tell more about me . Lorem Ipsum is simply dummy text of the printing and 
             typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.
             Want to learn more about me!
           </p>

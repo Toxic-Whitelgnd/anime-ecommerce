@@ -18,8 +18,8 @@ export default function Jackets({jackets}) {
       </Head>
     <div className='mt-24'>
         <div className='m-2 '>
-            <h1 >Browse our Jackets 🧥</h1>
-            <h6 className='text-red-500'>Still more Products are on the way 😍</h6>
+            <h1 className='font-silkscreen'>Browse our Jackets 🧥</h1>
+            <h6 className='text-red-500 font-lobster'>Still more Products are on the way 😍</h6>
         </div>
         <>
         {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}

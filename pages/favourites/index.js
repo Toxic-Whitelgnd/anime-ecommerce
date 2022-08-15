@@ -14,15 +14,15 @@ export default function Favourites_item() {
         <>
         <div className='mt-24'></div>
             <div>
-            <h1>Favourite Items (<span className='text-red-500'>{favqty}</span> Items)</h1>
+            <h1 className='font-silkscreen'>Favourite Items (<span className='text-red-500'>{favqty}</span> Items)</h1>
                 {
                     Favitem.length < 1 && (
                         <>
                         <div className="flex justify-center mt-10">
-                            <h1>Your Favourites item List is Empty</h1>
+                            <h1 className='font-marker'>Your Favourites item List is Empty</h1>
                         </div>
                         <div className='mt-4 flex justify-center'>
-                            <Button variant="light" href='/'>Continue Shopping</Button>
+                            <Button variant="light"  href='/'><span className="font-rajdhani">Continue Shopping</span></Button>
                         </div>
                         </>
                     )

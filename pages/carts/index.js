@@ -58,12 +58,12 @@ export default function CartItems() {
       </Head>
       <div className='mt-24'></div>
         <div className="bg-[#eb8a8a]" ref={cartRef}>
-            <h2>Your Cart (<span className='text-red-500'>{totalQty}</span> Items) </h2>
+            <h2 className='font-silkscreen'>Your Cart (<span className='text-red-500'>{totalQty}</span> Items) </h2>
             {
                 cartItem.length < 1 && (
                     <div>
                         <div className="flex justify-center text-center"> 
-                        <h1>Your Cart is Empty</h1>
+                        <h1 className="font-marker">Your Cart is Empty</h1>
                         </div>
                         <div className="flex justify-center text-center"> 
                         <AiOutlineShopping className='text-9xl' />
@@ -78,7 +78,7 @@ export default function CartItems() {
                         <>
                         <hr className="border-2"></hr>
                         <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
-                        <h1>{item.name}</h1>
+                        <h1 className="font-glitch">{item.name}</h1>
                                 <CartCard 
                                 name={item.name}
                                 price={item.price}
@@ -98,10 +98,10 @@ export default function CartItems() {
                             <hr className="border-4"></hr>
                             
                             <div className="flex flex-wrap justify-center text-center mt-4">
-                                <h3>Total:₹ {totalprice}</h3>
+                                <h3 className="font-lobster">Total:₹ {totalprice}</h3>
                             </div>
                             <div className="flex flex-wrap justify-center text-center mt-4 mb-5">
-                                <button className="btn btn-primary" onClick={ handleCheckOut}> Buy Now </button>
+                                <button className="btn btn-primary" onClick={ handleCheckOut}><span className="font-rajdhani">Buy Now</span> </button>
                                 </div>
                             <hr className="border-4"></hr>
                         </div>

@@ -23,10 +23,10 @@ export default function CartCard({name,price,pimage,product,quantity}) {
         </div>
         <Card style={{ width: '20rem',border: '1px solid' ,height: '14rem' ,backgroundColor:'#fa948c'}}>
             <Card.Body>
-                <Card.Title className="text-3xl capitalize"><h3>{name}</h3></Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Price info</Card.Subtitle>
+                <Card.Title className="text-3xl capitalize"><h3 className='font-wetpaint'>{name}</h3></Card.Title>
+                <Card.Subtitle className="mb-2 text-muted font-teko">Price info</Card.Subtitle>
                 <Card.Title>
-                <h6 className='text-xl'>₹ {price}</h6>
+                <h6 className='text-xl font-kanit'>₹ {price}</h6>
                 </Card.Title>
                 <div className="mt-4">
                                 <button type="button" onClick={()=>{

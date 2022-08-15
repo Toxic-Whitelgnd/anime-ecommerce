@@ -24,9 +24,9 @@ export default function FavCards({pimage,name,brand,price,slug,key,product}) {
                     </Tilt>
                 </div>
                 <div>
-                    <h3 className="text-red-600">{name}</h3>
-                    <p>Brand: {brand}</p>
-                    <h6>Price:₹ {price}</h6>
+                    <h3 className="text-red-600 font-wetpaint">{name}</h3>
+                    <p className='capitalize font-rajdhani'>Brand: <span className='font-kanit'>{brand}</span></p>
+                    <h6 className="font-lobster">Price:<span className='font-kanit'>₹ {price}</span></h6>
                 </div>
                 <div>
 
