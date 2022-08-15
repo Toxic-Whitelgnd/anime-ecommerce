@@ -78,7 +78,7 @@ export default function CartItems() {
                         <>
                         <hr className="border-2"></hr>
                         <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
-                            try {
+                            
                                 <>
                                 <h1 className="font-glitch">{item.name}</h1>
                                 <CartCard 
@@ -90,9 +90,7 @@ export default function CartItems() {
                                 />
                                 </>
                                 
-                            } catch (error) {
-                                <h3 className="font-glitch flex text-center mt-5">Opps it seems server is busy..Please reload and Try Again</h3>
-                            }
+                           
                         
                         </div>
                         

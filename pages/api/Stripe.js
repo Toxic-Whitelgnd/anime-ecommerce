@@ -2,7 +2,7 @@ import Stripe from 'stripe'
 
 console.log(process.env.NEXT_STRIPE_SECRET_KEY);
 
-const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY);
+const stripe = new Stripe('sk_test_51LWDqmSGr6vvmBhjBgjZEGUor1b5ppogo8IkF5VbJIvF3oRkjE90L9qO941ck6YencOKzobP2HeKDZuurw8AEUxI001Gbe8igX');
 
 
 
