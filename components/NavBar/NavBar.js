@@ -34,8 +34,8 @@ export default function NavBar() {
               </NavDropdown.Item>
               <NavDropdown.Item href="/shoes">Shoes</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Comming soon.
+              <NavDropdown.Item href="/comingsoon">
+                Coming soon.
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
