@@ -43,7 +43,7 @@ export default function CartItems() {
 
         console.log("sessionid mfff:"+data);
 
-        toast.loading("redirectiong to paymentpage ");
+        toast.loading("Hold on a sec Redirecting to Pyament Page ");
 
         stripe.redirectToCheckout({ sessionId: data.id});
 
