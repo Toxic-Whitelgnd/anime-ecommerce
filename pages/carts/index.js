@@ -1,7 +1,7 @@
 import DefaultLayout from '../../Layout/Layout'
 import Head from "next/head"
 
-import React,{useRef} from 'react';
+import React,{useRef,useState} from 'react';
 import Link from "next/link";
 import {AiOutlineMinus,AiOutlinePlus,AiOutlineLeft,AiOutlineRight,AiOutlineShopping} from "react-icons/ai";
 
@@ -14,6 +14,7 @@ import CartCard from '../../components/Cards/CartCard';
 
 export default function CartItems() {
     const cartRef = useRef();
+    const [size,setSize] = useState('S');
     const {totalprice,totalQty,cartItem,setShowcart,qty,onRemove,toggleCartItemQuantity} = useStateContext();
 
     const handleCheckOut = async ()=> {
@@ -87,6 +88,7 @@ export default function CartItems() {
                                 pimage={item.image}
                                 product={item}
                                 quantity={item.quantity}
+                                size={item.size}
                                 />
                                 </>
                                 

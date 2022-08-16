@@ -1,4 +1,5 @@
 
+
 import React,{createContext,useContext,useState,useEffect} from 'react'
 import {toast} from 'react-hot-toast';
 
@@ -34,7 +35,7 @@ export const StateConTexT = ({ children}) =>{
     }
     // quantity fuctoion ends here
     // add to cartfunctionality starts here
-    const onADDtocart = (product,quantity) => {
+    const onADDtocart = (product,quantity,size) => {
         // checking whter this product is alrady in cart or not yes means increase the qty
         const checkproductInCart = cartItem.find((item) => item._id === product._id);
 
@@ -56,7 +57,9 @@ export const StateConTexT = ({ children}) =>{
         } else{
             console.log(product);
             product.quantity = quantity;
+            product.size = size;
             console.log(product.quantity);
+            console.log(product.size);
 
             setcartItem([...cartItem,{...product}]);
 
@@ -119,6 +122,10 @@ export const StateConTexT = ({ children}) =>{
         setcartItem(newCartitems);
     }
 
+    const onNewSize = (product,size)=>{
+        product.size = size;
+    }
+
     return (
         <komali.Provider
             value={{
@@ -136,7 +143,8 @@ export const StateConTexT = ({ children}) =>{
               Favitem,
               onADDFavitem,
               favqty,
-              onRemoveFav
+              onRemoveFav,
+              onNewSize
             }}
         >
             {children}

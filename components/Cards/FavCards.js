@@ -30,7 +30,7 @@ export default function FavCards({pimage,name,brand,price,slug,key,product}) {
                 </div>
                 <div>
 
-                <a onClick={()=> onADDtocart(product,qty)} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
+                <a onClick={()=> onADDtocart(product,qty,'S')} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
                 <a onClick={()=> onRemoveFav(product)} className="btn btn-danger  mr-2"><BiTrash  /></a>
                
                <Button onClick={()=>{

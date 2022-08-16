@@ -12,6 +12,7 @@
     "@stripe/stripe-js": "^1.35.0",
     "bootstrap": "^5.2.0",
     "canvas-confetti": "^1.5.1",
+    "mongoose": "^6.5.2",
     "next": "latest",
     "react": "18.1.0",
     "react-bootstrap": "^2.5.0",

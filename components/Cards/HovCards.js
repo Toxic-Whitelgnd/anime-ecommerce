@@ -28,7 +28,7 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
                 </div>
                 <div>
 
-                <a onClick={()=> onADDtocart(product,qty)} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
+                <a onClick={()=> onADDtocart(product,qty,'S')} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
                 <a onClick={()=> {
                     console.log("Successfully");
                     onADDFavitem(product);

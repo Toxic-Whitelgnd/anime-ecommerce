@@ -5,12 +5,13 @@ import {RiStarSmileFill} from "react-icons/ri"
 import {useStateContext} from "../../context/StateConTexT";
 import Head from 'next/head'
 import {useRouter } from "next/router";
+import Form from 'react-bootstrap/Form';
 
 
 const ProductDetails = ({product}) => {
     
     const {name,details,type,image,ratings,brand,price} = product;
-    const [index,setIndex] = useState(0);
+    const [size,setSize] = useState('S Default');
     const {decqty,incqty,qty,onADDtocart} = useStateContext();
     const router = useRouter();
 
@@ -43,6 +44,19 @@ const ProductDetails = ({product}) => {
                 </div>
                 <h4 className="mt-2 mb-3 font-kanit">Price:₹ {price}</h4>
                 <div>
+                <div className="w-36">
+                <Form.Select aria-label="Selcet your Size" onChange={(e)=> setSize(e.target.value)} >
+                    <option value="S">Selct your Size</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </Form.Select>
+                </div>
+                <div>
+                    <h5>You Selected {size} Size</h5>
+                </div>
                 <h5 className="mb-2 font-kanit">Quantity</h5>
                     <button type="button" onClick={()=>{
                       console.log("pressed on plus");  
@@ -58,13 +72,14 @@ const ProductDetails = ({product}) => {
                 </div>
                 <div className="mt-4">
                     <button type="button" onClick={()=>{
-                      console.log("pressed on addtocart"); 
-                      onADDtocart(product,qty); 
+                      console.log("pressed on addtocart");
+                      console.log(size); 
+                      onADDtocart(product,qty,size); 
                     }} className="btn btn-warning mr-4 font-kanit"><span className="font-rajdhani">Add-to-cart</span></button>
                     <button type="button" onClick={()=>{
                       console.log("pressed on buynow");  
-                      console.log(product); 
-                      onADDtocart(product,qty);
+                      console.log(size); 
+                      onADDtocart(product,qty,size);
                        
                       router.push('/carts')
                     }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button>

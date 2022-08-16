@@ -36,6 +36,7 @@ export default async function handler(req, res) {
                     product_data:{
                         name:item.name,
                         images:[NewImg],
+                        description: item.size
                     },
                     unit_amount: item.price * 100,
                 },
@@ -43,7 +44,9 @@ export default async function handler(req, res) {
                     enabled:true,
                     minimum:1,
                 },
-                quantity: item.quantity
+                quantity: item.quantity,
+                
+                
             }
         }),
        
