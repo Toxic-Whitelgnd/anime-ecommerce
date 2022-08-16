@@ -8,7 +8,8 @@ import Head from 'next/head'
 export default function Jackets({jackets}) {
 
   const [Searchterm, setSearchterm] = useState('');
-
+  const [range,setRange] = useState(0);
+    // console.log(range);
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function Jackets({jackets}) {
         <div class="flex justify-center">
           <div class="mb-3  mt-4 xl:w-96">
             <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
-              <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search by..name..brand" aria-label="Search" aria-describedby="button-addon2" onChange={e => {
+              <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search by..name..brand" aria-label="Search"  aria-describedby="button-addon2" onChange={e => {
                     setSearchterm(e.target.value);
                 }} />
               <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out items-center" type="button" id="button-addon2">
@@ -40,12 +41,16 @@ export default function Jackets({jackets}) {
           </div>
         </div>
         {/* end of search */}
+        {/* for range price */}
+        {/* <input type="range" id="range"  value={range} max="2000" min="200" onChange={(e)=> setRange(e.target.value)}/>
+          <h5>Start Searching from the price above {range}</h5> */}
+        {/* end of range */}
           <div className="bg-[#eb8a8a] flex flex-wrap justify-center m-3 ">
            
            
         {
           jackets.filter((result)=>{
-            if (Searchterm == ""){
+            if (Searchterm == ''){
               return result
             }
             else if(result.name.toLocaleLowerCase().includes(Searchterm.toLocaleLowerCase())){
@@ -54,8 +59,15 @@ export default function Jackets({jackets}) {
             else if(result.brand.toLocaleLowerCase().includes(Searchterm.toLocaleLowerCase())){
               return result
             }
+            else if(result.price > 1000){  //in the place of 1000 reeplace with range
+              return result
+            }
+            else if(result.price < 1000){  //in the place of 1000 reeplace with range
+              return result
+            }
             
-          }).map(jacket =>(
+
+           }).map(jacket =>(
                 <HovCards 
                 name={jacket.name}
                 brand={jacket.brand}
@@ -67,6 +79,22 @@ export default function Jackets({jackets}) {
             )
             )
         }
+        {/* {
+          jackets.filter((result)=>{
+            if (result.price > range){
+              return result
+            }
+          }).map(jacket =>(
+            <HovCards 
+            name={jacket.name}
+            brand={jacket.brand}
+            price={jacket.price}
+            pimage={jacket.image}
+            slug={jacket.slug.current}
+            product={jacket}
+            />
+        ))
+        } */}
         </div>
         </div>
         </>
