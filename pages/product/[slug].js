@@ -44,7 +44,7 @@ const ProductDetails = ({product}) => {
                 </div>
                 <h4 className="mt-2 mb-3 font-kanit">Price:₹ {price}</h4>
                 <div>
-                <div className="w-36">
+                <div className="w-36 mb-4">
                 <Form.Select aria-label="Selcet your Size" onChange={(e)=> setSize(e.target.value)} >
                     <option value="S">Selct your Size</option>
                     <option value="S">S</option>
@@ -55,7 +55,7 @@ const ProductDetails = ({product}) => {
                 </Form.Select>
                 </div>
                 <div>
-                    <h5>You Selected {size} Size</h5>
+                    <h5 className="mb-2">You Selected {size} Size</h5>
                 </div>
                 <h5 className="mb-2 font-kanit">Quantity</h5>
                     <button type="button" onClick={()=>{
