@@ -15,7 +15,7 @@ export default function  Home ({banner,products})
       {/* <SSRProvider> */}
       <Head>
         <title>Aka Stores</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/akas.ico" />
       </Head>
 
       

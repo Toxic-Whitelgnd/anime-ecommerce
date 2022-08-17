@@ -138,6 +138,7 @@ export const StateConTexT = ({ children}) =>{
               decqty,  
               onADDtocart,
               setShowcart,
+              setcartItem,
               toggleCartItemQuantity,
               onRemove,
               Favitem,

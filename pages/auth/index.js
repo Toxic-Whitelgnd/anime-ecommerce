@@ -78,3 +78,23 @@
 //     </>
 //   )
 // }
+
+import { Button } from 'react-bootstrap'
+import React from 'react'
+import useAuth from "../../src/hooks/auth"
+
+export default function Authentication_Page() {
+    const {user,loginWithGoogle1,error} = useAuth();
+  return (
+    <>
+    <div className="mt-24"></div>
+    <div>Authentication_Page</div>
+    <h1>{error}</h1>
+    <div>
+        <Button variant="primary" onClick={loginWithGoogle1} className="ml-5 mt-5">abc</Button>
+    </div>
+    <h3>Successfully retrived the username:{user}</h3>
+    </>
+  )
+}
+

@@ -1,7 +1,7 @@
 import DefaultLayout from '../../Layout/Layout'
 import Head from "next/head"
 
-import React,{useRef,useState} from 'react';
+import React,{useRef,useState,useEffect} from 'react';
 import Link from "next/link";
 import {AiOutlineMinus,AiOutlinePlus,AiOutlineLeft,AiOutlineRight,AiOutlineShopping} from "react-icons/ai";
 
@@ -15,8 +15,14 @@ import CartCard from '../../components/Cards/CartCard';
 export default function CartItems() {
     const cartRef = useRef();
     const [size,setSize] = useState('S');
-    const {totalprice,totalQty,cartItem,setShowcart,qty,onRemove,toggleCartItemQuantity} = useStateContext();
-
+    const {totalprice,totalQty,cartItem,setShowcart,qty,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
+    useEffect(() =>{
+        const cartitemrev = window.localStorage.getItem('cartitmes');
+        setcartItem(JSON.parse(cartitemrev));
+    },[])
+    useEffect(()=>{
+        window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
+    })
     const handleCheckOut = async ()=> {
 
         console.log('came to func');

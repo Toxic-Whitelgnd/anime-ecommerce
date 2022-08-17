@@ -1,5 +1,7 @@
 import React from 'react'
 import {useRouter} from "next/router"
+import img1 from "../../images/akastores.png"
+import Image from "next/image"
 
 // NavBar components
 import Container from 'react-bootstrap/Container';
@@ -19,12 +21,14 @@ export default function NavBar() {
 
   return (
    <div>
+    
    <Navbar collapseOnSelect className="h-20 bg-[#212529]" expand="lg" bg="dark" variant="dark"  fixed="top" >
       <Container >
-        <Navbar.Brand  href="/">AkaStores</Navbar.Brand>
+        <Navbar.Brand  href="/">AkaStores </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"  />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="bg-[#212529] p-2">
+         
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/collections">Collections</Nav.Link>
             <NavDropdown title="Products" id="collasible-nav-dropdown" className="bg-[#212529]">

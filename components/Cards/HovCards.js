@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Image from "next/image"
 import Tilt from 'react-parallax-tilt';
 import { urlFor } from '../../lib/client';
@@ -8,8 +8,15 @@ import { MdFavorite, MdShoppingCart } from "react-icons/md";
 import { useStateContext } from '../../context/StateConTexT';
 
 export default function HovCards({pimage,name,brand,price,slug,key,product}) {
-    const {onADDtocart,qty,favqty,onADDFavitem} = useStateContext();
+    const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
     const router = useRouter();
+    useEffect(() =>{
+        const cartitemrev = window.localStorage.getItem('cartitmes');
+        setcartItem(JSON.parse(cartitemrev));
+    },[])
+    useEffect(()=>{
+        window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
+    })
   return (
         <>
     <div className="flex flex-wrap">

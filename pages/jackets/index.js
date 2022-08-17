@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import DefaultLayout from '../../Layout/Layout'
 import {Client} from "../../lib/client"
 import HovCards from "../../components/Cards/HovCards"
@@ -10,6 +10,7 @@ export default function Jackets({jackets}) {
   const [Searchterm, setSearchterm] = useState('');
   const [range,setRange] = useState(0);
     // console.log(range);
+  
 
   return (
     <>

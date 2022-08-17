@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { urlFor } from '../../lib/client';
 import getStripe from "../../lib/getStripe"
 import { Button } from 'react-bootstrap';
@@ -10,12 +10,20 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 export default function CartCard({name,price,pimage,product,quantity,size}) {
-    const {totalprice,totalQty,cartItem,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity} = useStateContext();
+    const {totalprice,totalQty,cartItem,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
     const [sizeo,setSizeo] = useState('S Default');
     const router = useRouter();
 
     let x = onNewSize(product, size)
     console.log(x);
+
+    useEffect(() =>{
+      const cartitemrev = window.localStorage.getItem('cartitmes');
+      setcartItem(JSON.parse(cartitemrev));
+  },[])
+  useEffect(()=>{
+      window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
+  })
 
   return (
     <div> 
