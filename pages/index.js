@@ -12,7 +12,7 @@ export default function  Home ({banner,products})
  {
   return (
     <div>
-      {/* <SSRProvider> */}
+     
       <Head>
         <title>Aka Stores</title>
         <link rel="icon" href="/akas.ico" />
@@ -66,8 +66,7 @@ export default function  Home ({banner,products})
         
       </>
       
-    
-    {/* </SSRProvider> */}
+
     </div>
   )
 }
