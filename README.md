@@ -1,8 +1,26 @@
 # DAY - 0
 2 Hrs work . Done Editing work for store in Photoshop..
 
+# DAY - 1
+7 Hrs work . Done Setting of Project Enviroment Frontend and Backend
 
+# DAY - 2
+7 Hrs work . Done Setting of Pages of Frontend and Backend
 
+# Day - 3
+5 Hrs Work . Done Setting of the stripejs and added Stripe Payment.
+
+# Day - 4
+8 Hrs Work . Cleared many bugs and added new features like stripe payment with billing , search and maded into mobile responsive.
+
+# DAY - 5
+3 Hrs work . Done Setting of fonts and new features of size selection and tested Deployment in vercel succsessful
+
+# DAY - 6
+5 Hrs work . Tried to set Login and signup using mongodb but failed
+
+# DAY - 7
+4 Hrs work . Tried to set Login and signup using firebase but failed and newly added icon to the store :/
 
 
 # Next.js + Tailwind CSS Example
