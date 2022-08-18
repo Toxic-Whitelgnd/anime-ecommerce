@@ -11,8 +11,8 @@ import Form from 'react-bootstrap/Form';
 const ProductDetails = ({product}) => {
     
     const {name,details,type,image,ratings,brand,price} = product;
-    const [size,setSize] = useState('S Default');
-    const {decqty,incqty,qty,onADDtocart} = useStateContext();
+    const [size,setSize] = useState('S');
+    const {decqty,incqty,qty,onADDtocart,onNewSize} = useStateContext();
     const router = useRouter();
 
   return (
@@ -55,7 +55,7 @@ const ProductDetails = ({product}) => {
                 </Form.Select>
                 </div>
                 <div>
-                    <h5 className="mb-2">You Selected {size} Size</h5>
+                    <h5 className="mb-2">You Selected {size} {onNewSize(product,size)} Size</h5>
                 </div>
                 <h5 className="mb-2 font-kanit">Quantity</h5>
                     <button type="button" onClick={()=>{
@@ -80,7 +80,8 @@ const ProductDetails = ({product}) => {
                       console.log("pressed on buynow");  
                       console.log(size); 
                       onADDtocart(product,qty,size);
-                       
+
+                       console.log(product);
                       router.push('/carts')
                     }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button>
                 </div>

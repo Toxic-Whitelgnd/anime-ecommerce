@@ -11,15 +11,17 @@ import Form from 'react-bootstrap/Form';
 
 export default function CartCard({name,price,pimage,product,quantity,size}) {
     const {totalprice,totalQty,cartItem,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
-    const [sizeo,setSizeo] = useState('S Default');
+    const [sizeo,setSizeo] = useState('S');
     const router = useRouter();
 
-    let x = onNewSize(product, size)
+    let x = onNewSize(product, sizeo)
     console.log(x);
 
     useEffect(() =>{
       const cartitemrev = window.localStorage.getItem('cartitmes');
       setcartItem(JSON.parse(cartitemrev));
+      onNewSize(product, sizeo);
+      console.log('fkk from effect:'+sizeo);
   },[])
   useEffect(()=>{
       window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
@@ -52,7 +54,8 @@ export default function CartCard({name,price,pimage,product,quantity,size}) {
                     <option value="XXL">XXL</option>
                 </Form.Select>
                 </div>
-                <h6 className='text-xl font-kanit'> {size === 'S'?onNewSize(product,sizeo):size}</h6>
+                {size === 'S'?onNewSize(product, sizeo):size}
+                <h6 className='text-xl font-kanit'>{size === 'S'? sizeo : size} </h6>
                 {/* <h6 className='text-xl font-kanit'> {sizeo} </h6> */}
                 </Card.Title>
                 </div>

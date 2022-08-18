@@ -123,7 +123,10 @@ export const StateConTexT = ({ children}) =>{
     }
 
     const onNewSize = (product,size)=>{
-        product.size = size;
+
+            product.size = size;
+        
+        
     }
 
     return (
