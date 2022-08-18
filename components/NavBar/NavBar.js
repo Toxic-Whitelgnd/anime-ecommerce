@@ -1,7 +1,5 @@
-import React from 'react'
-import {useRouter} from "next/router"
-import img1 from "../../images/akastores.png"
-import Image from "next/image"
+import React, { useState,useEffect } from 'react';
+import {useRouter} from "next/router";
 
 // NavBar components
 import Container from 'react-bootstrap/Container';
@@ -9,15 +7,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { MdFavorite, MdShoppingCart } from "react-icons/md";
-// import Link from 'react-scroll'
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import app from "../../firebase/firebaseconfig"
 
 // importing functionalities
 import { useStateContext } from '../../context/StateConTexT';
+
 
 export default function NavBar() {
 
   const router = useRouter();
   const {favqty, setShowcart , totalQty} = useStateContext();
+
+
+
 
   return (
    <div>
@@ -44,11 +48,8 @@ export default function NavBar() {
             </NavDropdown>
           </Nav>
           <Nav className="bg-[#212529] p-2">
-            <Nav.Link href="/aboutus">AboutUs</Nav.Link>
-            <Nav.Link eventKey={2} href="/aboutus">
-                MSOB
-            </Nav.Link>
-            
+            <Nav.Link href="/aboutus">AboutUs</Nav.Link>   
+            <Nav.Link href="/auth">User</Nav.Link>   
           </Nav>
           <div className="bg-[#212529] p-2">
           <button type="button" className="btn btn-danger mr-3 ml-2" onClick={()=> router.push('/favourites') }>
@@ -60,11 +61,14 @@ export default function NavBar() {
             }} className="btn btn-success">
               <MdShoppingCart className="text-2xl " /> <span className="badge badge-light">{totalQty}</span>
           </button>
+    
           </div>
+          
             
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
     </div>
 
   )
