@@ -9,23 +9,46 @@ import { useStateContext } from '../../context/StateConTexT';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
-export default function CartCard({name,price,pimage,product,quantity,size}) {
+import {getFirestore, doc, deleteDoc,getDocs,collection} from "firebase/firestore";
+import {db,app} from "../../firebase/firebaseconfig"
+import toast from 'react-hot-toast';
+
+
+
+export default function CartCard({name,price,pimage,product,quantity,size,pid,index}) {
     const {totalprice,totalQty,cartItem,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
     const [sizeo,setSizeo] = useState('S');
     const router = useRouter();
 
-    let x = onNewSize(product, sizeo)
-    console.log(x);
-
     useEffect(() =>{
-      const cartitemrev = window.localStorage.getItem('cartitmes');
-      setcartItem(JSON.parse(cartitemrev));
-      onNewSize(product, sizeo);
-      console.log('fkk from effect:'+sizeo);
-  },[])
-  useEffect(()=>{
-      window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
-  })
+      console.log(cartItem.length);
+      
+  },[]);
+
+  const [data,setdata]= useState([]);
+  
+  const onDelete = async (pid) =>{
+    
+    console.log(typeof(pid));
+
+    const dba = doc(db,"usertkn",pid)
+
+  
+
+    await deleteDoc(dba)
+    .then(() => {
+        console.log("Entire Document has been deleted successfully."+pid)
+        toast.success(`${product.name} has been deleted successfully!`);
+    })
+    .catch(error => {
+        console.log(error);
+    })
+
+};
+  
+   
+
+
 
   return (
     <div> 
@@ -36,7 +59,11 @@ export default function CartCard({name,price,pimage,product,quantity,size}) {
         </div>
         <Card style={{ width: '20rem',border: '1px solid' ,height: '18rem' ,backgroundColor:'#fa948c'}}>
             <Card.Body>
-              <div><div className=' text-3xl sm:mt-2' onClick={()=> onRemove(product) } ><BiTrash className='text-red-500 text-xl' /></div></div>
+              <div><div className=' text-3xl sm:mt-2' onClick={()=> {
+                onDelete(pid);
+                onRemove(product)
+                
+              }  } ><BiTrash className='text-red-500 text-xl' /></div></div>
                 <Card.Title className="text-3xl capitalize"><h3 className='font-wetpaint'>{name}</h3></Card.Title>
                 <Card.Subtitle className="mb-2 text-muted font-teko">info</Card.Subtitle>
                 <Card.Title>
@@ -55,7 +82,7 @@ export default function CartCard({name,price,pimage,product,quantity,size}) {
                 </Form.Select>
                 </div>
                 {size === 'S'?onNewSize(product, sizeo):size}
-                <h6 className='text-xl font-kanit'>{size === 'S'? sizeo : size} </h6>
+                {/* <h6 className='text-xl font-kanit'>{size === 'S'? sizeo : size} </h6> */}
                 {/* <h6 className='text-xl font-kanit'> {sizeo} </h6> */}
                 </Card.Title>
                 </div>

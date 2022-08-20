@@ -5,10 +5,11 @@ import {Client} from '../lib/client';
 import HovCards from '../components/Cards/HovCards';
 // import {SSRProvider} from 'react-aria';
 import react,{useEffect,useState} from 'react';
-// import app from "../firebase/firebaseconfig"
+
 import {useRouter} from "next/router";
 
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import app from "../firebase/firebaseconfig"
 
 export default function  Home ({banner,products})
 
@@ -16,23 +17,23 @@ export default function  Home ({banner,products})
 
  {
   const router = useRouter();
-//   const [user, setUser] = useState([]);
-//   const auth = getAuth(app);
+  const [user, setUser] = useState([]);
+  const auth = getAuth(app);
 
-//   let uname;
+  let uname;
 
-//   onAuthStateChanged(auth,(user) => {
-//   if(user){
-//     setUser(user);
-//      uname = user.displayName;
-//     console.log("user siggned in")
-//     console.log(uname);
-//   }
-//   else{
-//     setUser(false);
-//     console.log("user siggned out")
-//   }
-// })
+  onAuthStateChanged(auth,(user) => {
+  if(user){
+    setUser(user);
+     uname = user.displayName;
+    console.log("user siggned in")
+    console.log(uname);
+  }
+  else{
+    setUser(false);
+    console.log("user siggned out")
+  }
+})
   
   useEffect(()=>{
     let token = sessionStorage.getItem('Token')
@@ -71,7 +72,7 @@ export default function  Home ({banner,products})
         }
         </div>
         <div>
-            <h3 className='font-silkscreen'>Browse Our top Selling Products </h3>
+            <h3 className='font-silkscreen'>Browse Our top Selling Products {user.displayName}</h3>
             {/* {user.displayName} */}
         </div> 
         {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}

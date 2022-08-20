@@ -7,6 +7,8 @@ import Head from 'next/head'
 import {useRouter } from "next/router";
 import Form from 'react-bootstrap/Form';
 
+import { collection, getDocs,addDoc } from "firebase/firestore";
+import {db,app} from "../../firebase/firebaseconfig"
 
 const ProductDetails = ({product}) => {
     
@@ -14,6 +16,20 @@ const ProductDetails = ({product}) => {
     const [size,setSize] = useState('S');
     const {decqty,incqty,qty,onADDtocart,onNewSize} = useStateContext();
     const router = useRouter();
+
+    const [data,setdata]= useState([]);
+
+
+    const db1Ref = collection(db,"usertkn");
+    const pushdata = async () =>{
+        try {
+            addDoc(db1Ref,product)
+            console.log("sened successfully",db1Ref.id);
+        }
+        catch (e){
+            console.error("Error adding document: ", e);
+        }
+    }
 
   return (
     
@@ -75,12 +91,13 @@ const ProductDetails = ({product}) => {
                       console.log("pressed on addtocart");
                       console.log(size); 
                       onADDtocart(product,qty,size); 
+                      pushdata();
                     }} className="btn btn-warning mr-4 font-kanit"><span className="font-rajdhani">Add-to-cart</span></button>
                     <button type="button" onClick={()=>{
                       console.log("pressed on buynow");  
                       console.log(size); 
                       onADDtocart(product,qty,size);
-
+                      pushdata();
                        console.log(product);
                       router.push('/carts')
                     }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button>

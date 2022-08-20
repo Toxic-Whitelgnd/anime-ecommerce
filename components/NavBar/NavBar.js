@@ -9,19 +9,39 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { MdFavorite, MdShoppingCart } from "react-icons/md";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import app from "../../firebase/firebaseconfig"
+
 
 // importing functionalities
 import { useStateContext } from '../../context/StateConTexT';
-
+import { collection, getDocs } from "firebase/firestore";
+import {db,app} from "../../firebase/firebaseconfig"
 
 export default function NavBar() {
 
   const router = useRouter();
-  const {favqty, setShowcart , totalQty} = useStateContext();
 
+  const {favqty, totalprice,totalQty,setTotalQty,cartItem,setqty,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
 
+  const [data,setdata]= useState([]);
+ 
 
+  useEffect(()=>{
+    getdata();
+   
+  })
+  
+  const getdata = async () =>{
+    const querySnapshot = await getDocs(collection(db,"usertkn"));
+    data = querySnapshot.docs.map(doc => {
+      return {
+          ...doc.data(),
+          id:doc.id
+         } 
+  } );
+    setdata(data);
+    setcartItem(data);
+    
+  }
 
   return (
    <div>
@@ -59,7 +79,7 @@ export default function NavBar() {
                 router.push('/carts');
                 setShowcart(true)
             }} className="btn btn-success">
-              <MdShoppingCart className="text-2xl " /> <span className="badge badge-light">{totalQty}</span>
+              <MdShoppingCart className="text-2xl " /> <span className="badge badge-light">{data.length}</span>
           </button>
     
           </div>

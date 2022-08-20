@@ -3,12 +3,20 @@ import React,{useEffect} from 'react'
 import { Order_success } from '../lib/utils'
 import Button from 'react-bootstrap/Button';
 import {useRouter} from "next/router"
+import { useStateContext } from '../context/StateConTexT';
+
 
 export default function Success_Order() {
+
+    const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
+
     useEffect(() =>{
         Order_success();
+        setcartItem([]);
     },[]);
     const router = useRouter();
+    
+
   return (
     <>
     <Head>
