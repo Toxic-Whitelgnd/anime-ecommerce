@@ -15,7 +15,6 @@ import Card from 'react-bootstrap/Card';
 import {BiTrash} from "react-icons/bi"
 import Form from 'react-bootstrap/Form';
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // my own
 import { collection, getDocs } from "firebase/firestore";
@@ -30,8 +29,7 @@ export default function CartItems() {
 
     let pqty = 0;
     
-    const auth = getAuth(app);
-    const cuser = auth.currentUser;
+   
 
     const {totalprice,totalQty,setTotalQty,cartItem,setqty,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
     useEffect(() =>{
@@ -42,13 +40,14 @@ export default function CartItems() {
     },[])
     useEffect(()=>{
         window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
+       
     });
 
     const [sizeo,setSizeo] = useState('S');
     const pid = [];
 
     const getdata = async () =>{
-        const querySnapshot = await getDocs(collection(db,cuser.uid));
+        const querySnapshot = await getDocs(collection(db,"global"));
         querySnapshot.forEach((doc) => {
            return {
             ...doc.data(),
@@ -56,7 +55,6 @@ export default function CartItems() {
            }       
         })
         setFiredata(querySnapshot);
-        console.log("fd"+querySnapshot);
 
         data = querySnapshot.docs.map(doc => {
             return {
@@ -64,16 +62,14 @@ export default function CartItems() {
                 id:doc.id
                } 
         } );
-        console.log();
         setdata(data);
-        console.log("done after");
+        console.log("done after setting data");
         setcartItem(data);
         pqty = cartItem.length
         // setTotalQty(pqty);
         totalQty = totalQty + pqty;
         console.log("done after cartitems");
 
-        console.log("seprate");
      
     }
 

@@ -31,7 +31,7 @@ export default function NavBar() {
   })
   
   const getdata = async () =>{
-    const querySnapshot = await getDocs(collection(db,"usertkn"));
+    const querySnapshot = await getDocs(collection(db,"global"));
     data = querySnapshot.docs.map(doc => {
       return {
           ...doc.data(),

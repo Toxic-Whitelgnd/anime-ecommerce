@@ -29,19 +29,6 @@ export default function  Home ({banner,products})
   // }
 
 
-
-//    onAuthStateChanged(auth,(user) => {
-//   if(user){
-//     setUser(user);
-//     console.log("user siggned in")
-
-//   }
-//   else{
-//     setUser(false);
-//     console.log("user siggned out")
-//   }
-// })
-
   const  signoutuser = async () => {
     console.log("signoutuser");
   }

@@ -10,7 +10,7 @@ import { useStateContext } from '../../context/StateConTexT';
 // trying by my own
 import { collection, addDoc } from "firebase/firestore"; 
 import {db,app} from "../../firebase/firebaseconfig"
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import toast from 'react-hot-toast';
 
 
@@ -27,22 +27,15 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
     //     // console.log(token);
     // })
 
-    
+   
 
     useEffect(() =>{
-
-        // const auth = getAuth(app);
-        // const cuser = auth.currentUser;
-
-        // if(cuser == null){
-        //     const router = useRouter();
-        //     toast.error("please sign in to access the cart items");
-        //     router.push(`/auth`)
-        // }
+       
+        
     });
 
     // trying by my own
-    const db1Ref = collection(db,"usertkn");
+    const db1Ref = collection(db,"global");
     const pushdata = async () =>{
         try {
             addDoc(db1Ref,product)

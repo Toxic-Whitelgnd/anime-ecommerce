@@ -10,7 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 import {getFirestore, doc, deleteDoc,getDocs,collection} from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import {db,app} from "../../firebase/firebaseconfig"
 import toast from 'react-hot-toast';
 
@@ -28,14 +28,12 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
 
   const [data,setdata]= useState([]);
 
-  const auth = getAuth(app);
-  const cuser = auth.currentUser;
   
   const onDelete = async (pid) =>{
     
     console.log(typeof(pid));
 
-    const dba = doc(db,cuser.uid,pid)
+    const dba = doc(db,"global",pid)
 
   
 
