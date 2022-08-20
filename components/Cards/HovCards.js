@@ -11,6 +11,7 @@ import { useStateContext } from '../../context/StateConTexT';
 import { collection, addDoc } from "firebase/firestore"; 
 import {db,app} from "../../firebase/firebaseconfig"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import toast from 'react-hot-toast';
 
 
 export default function HovCards({pimage,name,brand,price,slug,key,product}) {
@@ -26,25 +27,20 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
     //     // console.log(token);
     // })
 
-    // const [user, setUser] = useState([]);
-    // const auth = getAuth(app);
+    
 
-    // let uname;
+    useEffect(() =>{
 
-    // onAuthStateChanged(auth,(user) => {
-    // if(user){
-    //     setUser(user);
-    //     uname = user.displayName;
-    //     console.log("user siggned in")
-    //     console.log(uname);
-    // }
-    // else{
-    //     setUser(false);
-    //     console.log("user siggned out")
-    // }
-    // })
+        // const auth = getAuth(app);
+        // const cuser = auth.currentUser;
 
-    // console.log("mff"+name);
+        // if(cuser == null){
+        //     const router = useRouter();
+        //     toast.error("please sign in to access the cart items");
+        //     router.push(`/auth`)
+        // }
+    });
+
     // trying by my own
     const db1Ref = collection(db,"usertkn");
     const pushdata = async () =>{

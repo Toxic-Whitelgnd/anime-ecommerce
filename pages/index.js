@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Banner_Product from '../components/Banner/Banner';
 import {Client} from '../lib/client';
 import HovCards from '../components/Cards/HovCards';
-// import {SSRProvider} from 'react-aria';
+import { Button } from 'react-bootstrap';
 import react,{useEffect,useState} from 'react';
 
 import {useRouter} from "next/router";
@@ -11,30 +11,41 @@ import {useRouter} from "next/router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import app from "../firebase/firebaseconfig"
 
+
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import {FaRegUserCircle} from "react-icons/fa"
+
+
 export default function  Home ({banner,products})
-
-
-
  {
   const router = useRouter();
   const [user, setUser] = useState([]);
-  const auth = getAuth(app);
+  // const auth = getAuth(app);
+  // const cuser = auth.currentUser;
 
-  let uname;
 
-  onAuthStateChanged(auth,(user) => {
-  if(user){
-    setUser(user);
-     uname = user.displayName;
-    console.log("user siggned in")
-    console.log(uname);
+  // if (cuser === null){
+  //   console.log("no current user");
+  // }
+
+
+
+//    onAuthStateChanged(auth,(user) => {
+//   if(user){
+//     setUser(user);
+//     console.log("user siggned in")
+
+//   }
+//   else{
+//     setUser(false);
+//     console.log("user siggned out")
+//   }
+// })
+
+  const  signoutuser = async () => {
+    console.log("signoutuser");
   }
-  else{
-    setUser(false);
-    console.log("user siggned out")
-  }
-})
-  
+
   useEffect(()=>{
     let token = sessionStorage.getItem('Token')
 
@@ -53,6 +64,21 @@ export default function  Home ({banner,products})
       
       <>
       <div className="mt-24">
+        {/* <div className='flex flex-row justify-around'>
+          <h2>Hello Mr {cuser === null ? 'Guest' : cuser.displayName }</h2>
+          <div className='flex justify-end '>
+          {cuser === null ? <Button onClick={()=>{
+                    router.push(`/auth`)
+                }}  variant="dark" className='flex place-content-end' >Login</Button> : 
+                <Button onClick={()=>{
+               signoutuser() }}  variant="dark" className='flex place-content-end' >Logout</Button>}
+          
+          </div>
+          <div>   
+      
+
+          </div>
+        </div> */}
         {
           banner.map(banner => (
           
@@ -72,7 +98,7 @@ export default function  Home ({banner,products})
         }
         </div>
         <div>
-            <h3 className='font-silkscreen'>Browse Our top Selling Products {user.displayName}</h3>
+            <h3 className='font-silkscreen'>Browse Our top Selling Products </h3>
             {/* {user.displayName} */}
         </div> 
         {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}

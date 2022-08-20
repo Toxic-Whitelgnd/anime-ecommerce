@@ -69,7 +69,7 @@ export default function NavBar() {
           </Nav>
           <Nav className="bg-[#212529] p-2">
             <Nav.Link href="/aboutus">AboutUs</Nav.Link>   
-            <Nav.Link href="/auth">User</Nav.Link>   
+            {/* <Nav.Link href="/auth">User</Nav.Link>    */}
           </Nav>
           <div className="bg-[#212529] p-2">
           <button type="button" className="btn btn-danger mr-3 ml-2" onClick={()=> router.push('/favourites') }>

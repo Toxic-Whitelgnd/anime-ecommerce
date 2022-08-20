@@ -15,6 +15,7 @@ import Card from 'react-bootstrap/Card';
 import {BiTrash} from "react-icons/bi"
 import Form from 'react-bootstrap/Form';
 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // my own
 import { collection, getDocs } from "firebase/firestore";
@@ -28,7 +29,9 @@ export default function CartItems() {
     const [firedata,setFiredata] = useState([]);
 
     let pqty = 0;
-        
+    
+    const auth = getAuth(app);
+    const cuser = auth.currentUser;
 
     const {totalprice,totalQty,setTotalQty,cartItem,setqty,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
     useEffect(() =>{
@@ -45,7 +48,7 @@ export default function CartItems() {
     const pid = [];
 
     const getdata = async () =>{
-        const querySnapshot = await getDocs(collection(db,"usertkn"));
+        const querySnapshot = await getDocs(collection(db,cuser.uid));
         querySnapshot.forEach((doc) => {
            return {
             ...doc.data(),
@@ -157,7 +160,7 @@ export default function CartItems() {
                         <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
                             
                                 <>
-                                <h1 className="font-glitch">{item.name} - {item.id}</h1>
+                                <h1 className="font-glitch">{item.name}</h1>
                                 <CartCard 
                                 name={item.name}
                                 price={item.price}
