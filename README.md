@@ -22,6 +22,15 @@
 # DAY - 7
 4 Hrs work . Tried to set Login and signup using firebase but failed and newly added icon to the store :/
 
+# DAY - 8
+5 hrs . Setted Login and Signup with using firebase ;|
+
+# DAY - 9
+7 hrs . Done read , write and delete on the cart product to the server. And Displaying the Username.
+
+# Day - 10
+7 hrs . Done read , write and delete on the favourite product and fixed some bugs and added new features.
+
 
 # Next.js + Tailwind CSS Example
 
