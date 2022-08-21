@@ -12,25 +12,30 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import app from "../firebase/firebaseconfig"
 
 
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import {FaRegUserCircle} from "react-icons/fa"
+import {useAuthStateContext} from "../context/AuthStatechnged"
 
 
 export default function  Home ({banner,products})
  {
   const router = useRouter();
-  const [user, setUser] = useState([]);
-  // const auth = getAuth(app);
-  // const cuser = auth.currentUser;
+  const auth = getAuth(app);
+  const cuser = auth.currentUser;
+
+  const[user,setuser] = useState(null);
 
 
-  // if (cuser === null){
-  //   console.log("no current user");
-  // }
+  if (cuser === null){
+    console.log("no current user");
+  }
+  else{
+    const dname = cuser.displayName;
+  }
 
 
   const  signoutuser = async () => {
     console.log("signoutuser");
+    sessionStorage.removeItem("Token");
+    
   }
 
   useEffect(()=>{
@@ -39,7 +44,20 @@ export default function  Home ({banner,products})
     if(token){
       router.push('/')
     }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        
+        const uid = user.uid;
+
+        setuser(user)
+        console.log("from eff"+uid);
+
+      } else {
+       
+      }
+    });
   },[])
+
   return (
     <div>
      
@@ -51,8 +69,8 @@ export default function  Home ({banner,products})
       
       <>
       <div className="mt-24">
-        {/* <div className='flex flex-row justify-around'>
-          <h2>Hello Mr {cuser === null ? 'Guest' : cuser.displayName }</h2>
+        <div className='flex flex-row justify-around'>
+          <h2>Hello Mr {cuser === null ? 'Guest' :cuser.displayName}</h2>
           <div className='flex justify-end '>
           {cuser === null ? <Button onClick={()=>{
                     router.push(`/auth`)
@@ -65,7 +83,7 @@ export default function  Home ({banner,products})
       
 
           </div>
-        </div> */}
+        </div>
         {
           banner.map(banner => (
           
@@ -85,7 +103,7 @@ export default function  Home ({banner,products})
         }
         </div>
         <div>
-            <h3 className='font-silkscreen'>Browse Our top Selling Products </h3>
+            <h3 className='font-silkscreen'>Browse Our top Selling Products  </h3>
             {/* {user.displayName} */}
         </div> 
         {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}

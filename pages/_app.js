@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'  //normal bootstrap
 import {StateConTexT} from "../context/StateConTexT"
 import {Toaster} from 'react-hot-toast'
 import DefaultLayout from '../Layout/Layout';
-
+import {AuthStatechnged} from "../context/AuthStatechnged"
 
 import NextNProgress from "nextjs-progressbar";
 
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
   return (
 
   <StateConTexT>
-    
+  <AuthStatechnged>   
  
     <DefaultLayout>
       <Toaster />
@@ -57,9 +57,11 @@ function MyApp({ Component, pageProps }) {
           height={5}
           showOnShallow={true}
         />
+        
           <Component {...pageProps} />
-
+          
     </DefaultLayout>
+    </AuthStatechnged>
   </StateConTexT>
 
   )

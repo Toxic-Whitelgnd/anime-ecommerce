@@ -8,13 +8,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { MdFavorite, MdShoppingCart } from "react-icons/md";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 // importing functionalities
 import { useStateContext } from '../../context/StateConTexT';
 import { collection, getDocs } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
+import toast from 'react-hot-toast';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function NavBar() {
 
@@ -23,15 +24,43 @@ export default function NavBar() {
   const {favqty, totalprice,totalQty,setTotalQty,cartItem,setqty,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
 
   const [data,setdata]= useState([]);
- 
+  
+  const auth = getAuth(app);
+  const [user1,setuser] = useState(null);
 
   useEffect(()=>{
-    getdata();
-   
-  })
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        setuser(user);
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  
+  },[]);
+
+  useEffect(() =>{
+    let timer1 = setTimeout(() =>  getdata(), 5 * 1000);
+    
+     return () => {
+      clearTimeout(timer1);
+    };
+  });
+
+if(user1 === null){
+    console.log("no user1 found");
+}
+else{
+    // console.log("from navbar"+user1.uid)
+}
   
   const getdata = async () =>{
-    const querySnapshot = await getDocs(collection(db,"global"));
+    const querySnapshot = await getDocs(collection(db,user1.email));
     data = querySnapshot.docs.map(doc => {
       return {
           ...doc.data(),

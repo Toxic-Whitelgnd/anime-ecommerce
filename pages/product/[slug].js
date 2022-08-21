@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import {Client,urlFor} from '../../lib/client'
 import DefaultLayout from '../../Layout/Layout'
 import {RiStarSmileFill} from "react-icons/ri" 
@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 
 import { collection, getDocs,addDoc } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const ProductDetails = ({product}) => {
     
@@ -19,9 +20,34 @@ const ProductDetails = ({product}) => {
 
     const [data,setdata]= useState([]);
 
+    const auth = getAuth(app);
 
-    const db1Ref = collection(db,"usertkn");
+    const [user1,setuser] = useState(null);
+
+    useEffect(() =>{
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in, see docs for a list of available properties
+              // https://firebase.google.com/docs/reference/js/firebase.User
+              const uid = user.uid;
+              setuser(user);
+            } else {
+              // User is signed out
+              // ...
+            }
+          });
+        
+    });
+    if(user1 === null){
+        console.log("no user1 found");
+    }
+    else{
+        // console.log("from hovcards"+user1.uid)
+    }
+
+   
     const pushdata = async () =>{
+      const db1Ref = collection(db,user1.email);
         try {
             addDoc(db1Ref,product)
             console.log("sened successfully",db1Ref.id);
@@ -93,14 +119,14 @@ const ProductDetails = ({product}) => {
                       onADDtocart(product,qty,size); 
                       pushdata();
                     }} className="btn btn-warning mr-4 font-kanit"><span className="font-rajdhani">Add-to-cart</span></button>
-                    <button type="button" onClick={()=>{
+                    {/* <button type="button" onClick={()=>{
                       console.log("pressed on buynow");  
                       console.log(size); 
                       onADDtocart(product,qty,size);
                       pushdata();
                        console.log(product);
                       router.push('/carts')
-                    }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button>
+                    }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button> */}
                 </div>
             </div>
             </div>

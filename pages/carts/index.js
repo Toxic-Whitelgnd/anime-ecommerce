@@ -5,7 +5,6 @@ import React,{useRef,useState,useEffect} from 'react';
 import Link from "next/link";
 import {AiOutlineMinus,AiOutlinePlus,AiOutlineLeft,AiOutlineRight,AiOutlineShopping} from "react-icons/ai";
 
-import toast from "react-hot-toast";
 
 import { useStateContext } from '../../context/StateConTexT';
 import { urlFor } from '../../lib/client';
@@ -19,6 +18,8 @@ import Form from 'react-bootstrap/Form';
 // my own
 import { collection, getDocs } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
+import toast from 'react-hot-toast';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function CartItems() {
     const cartRef = useRef();
@@ -32,46 +33,70 @@ export default function CartItems() {
    
 
     const {totalprice,totalQty,setTotalQty,cartItem,setqty,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
-    useEffect(() =>{
-        const cartitemrev = window.localStorage.getItem('cartitmes');
-        setcartItem(JSON.parse(cartitemrev));
-        getdata();
+    
 
-    },[])
-    useEffect(()=>{
-        window.localStorage.setItem("cartitmes",JSON.stringify(cartItem));
-       
-    });
+    const auth = getAuth(app);
+    const [user1,setuser] = useState(null);
+
+  useEffect(() =>{
+      onAuthStateChanged(auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            setuser(user);
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
+      
+  },[]);
+
+  useEffect(() =>{
+    let timer1 = setTimeout(() =>  getdata(), 1 * 1000);
+    
+     return () => {
+      clearTimeout(timer1);
+    };
+  });
+
+  if(user1 === null){
+      console.log("no user1 found");
+  }
+  else{
+      // console.log("from hovcards"+user1.uid)
+  }
 
     const [sizeo,setSizeo] = useState('S');
     const pid = [];
 
-    const getdata = async () =>{
-        const querySnapshot = await getDocs(collection(db,"global"));
-        querySnapshot.forEach((doc) => {
-           return {
-            ...doc.data(),
-            id:doc.id
-           }       
-        })
-        setFiredata(querySnapshot);
-
-        data = querySnapshot.docs.map(doc => {
-            return {
+    
+        const getdata = async () =>{
+            const querySnapshot = await getDocs(collection(db,user1.email));
+            querySnapshot.forEach((doc) => {
+               return {
                 ...doc.data(),
                 id:doc.id
-               } 
-        } );
-        setdata(data);
-        console.log("done after setting data");
-        setcartItem(data);
-        pqty = cartItem.length
-        // setTotalQty(pqty);
-        totalQty = totalQty + pqty;
-        console.log("done after cartitems");
-
-     
-    }
+               }       
+            })
+            setFiredata(querySnapshot);
+    
+            data = querySnapshot.docs.map(doc => {
+                return {
+                    ...doc.data(),
+                    id:doc.id
+                   } 
+            } );
+            setdata(data);
+           
+            setcartItem(data);
+        
+    
+         
+        }
+    
+   
 
     const handleCheckOut = async ()=> {
 
@@ -152,7 +177,7 @@ export default function CartItems() {
                         
                         <>
                         <hr className="border-2"></hr>
-                        <h6 className='opacity-0'>{totlprice(item.price)}</h6>
+                        <h6 className='opacity-0'>{ totlprice(item.price)}</h6>
                         <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
                             
                                 <>

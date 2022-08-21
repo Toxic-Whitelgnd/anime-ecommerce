@@ -1,12 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import DefaultLayout from '../../Layout/Layout'
 import {Client} from "../../lib/client"
 import HovCards from "../../components/Cards/HovCards"
 import Head from 'next/head'
+import { Button } from 'react-bootstrap';
 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {db,app} from "../../firebase/firebaseconfig"
+
+const auth = getAuth(app);
+    const cuser = auth.currentUser;
+
+
+    if (cuser === null){
+       console.log("no current user");
+       
+    }
 
 export default function Tshirts({tshirts}) {
   const [Searchterm, setSearchterm] = useState('');
+
+  const [user1,setuser] = useState(null);
+
+    useEffect(() =>{
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in, see docs for a list of available properties
+              // https://firebase.google.com/docs/reference/js/firebase.User
+              const uid = user.uid;
+              setuser(user);
+            } else {
+              // User is signed out
+              // ...
+            }
+          });
+        
+    });
+    if(user1 === null){
+        console.log("no user1 found");
+    }
+    else{
+        // console.log(user1.uid)
+    }
+
   return (
     <>
       <Head>
@@ -14,6 +50,21 @@ export default function Tshirts({tshirts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='mt-24'></div>
+      {/* <div className='flex flex-row justify-around'>
+          <h2>Hello Mr {cuser === null ? 'Guest' : cuser.displayName }</h2>
+          <div className='flex justify-end '>
+          {cuser === null ? <Button onClick={()=>{
+                    router.push(`/auth`)
+                }}  variant="dark" className='flex place-content-end' >Login</Button> : 
+                <Button onClick={()=>{
+               signoutuser() }}  variant="dark" className='flex place-content-end' >Logout</Button>}
+          
+          </div>
+          <div>   
+      
+
+          </div>
+        </div> */}
     <div className='m-2'>
         <h1 className='font-silkscreen'>Browse our Tshirts 👕</h1>
         <h6 className='text-red-500 font-lobster'>Still more Brands are on the way 😍</h6>

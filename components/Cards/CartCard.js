@@ -12,7 +12,9 @@ import Form from 'react-bootstrap/Form';
 import {getFirestore, doc, deleteDoc,getDocs,collection} from "firebase/firestore";
 
 import {db,app} from "../../firebase/firebaseconfig"
+
 import toast from 'react-hot-toast';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 
@@ -28,12 +30,35 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
 
   const [data,setdata]= useState([]);
 
+  const auth = getAuth(app);  
+  const [user1,setuser] = useState(null);
+
+  useEffect(() =>{
+      onAuthStateChanged(auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            setuser(user);
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
+      
+  });
+  if(user1 === null){
+      console.log("no user1 found");
+  }
+  else{
+      // console.log("from hovcards"+user1.uid)
+  }
   
   const onDelete = async (pid) =>{
     
     console.log(typeof(pid));
 
-    const dba = doc(db,"global",pid)
+    const dba = doc(db,user1.email,pid)
 
   
 

@@ -12,7 +12,7 @@ import { collection, addDoc } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
 
 import toast from 'react-hot-toast';
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function HovCards({pimage,name,brand,price,slug,key,product}) {
     const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
@@ -27,16 +27,43 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
     //     // console.log(token);
     // })
 
-   
+    const auth = getAuth(app);
+    const cuser = auth.currentUser;
+
+
+    if (cuser === null){
+       console.log("no current user");
+       
+    }
+
+    const [user1,setuser] = useState(null);
 
     useEffect(() =>{
-       
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in, see docs for a list of available properties
+              // https://firebase.google.com/docs/reference/js/firebase.User
+              const uid = user.uid;
+              setuser(user);
+            } else {
+              // User is signed out
+              // ...
+            }
+          });
         
     });
+    if(user1 === null){
+        console.log("no user1 found");
+    }
+    else{
+        // console.log("from hovcards"+user1.uid)
+    }
 
+ 
     // trying by my own
-    const db1Ref = collection(db,"global");
+   
     const pushdata = async () =>{
+        const db1Ref = collection(db,user1.email);
         try {
             addDoc(db1Ref,product)
             console.log("sened successfully",db1Ref.id);
