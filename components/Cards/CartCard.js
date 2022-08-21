@@ -55,21 +55,26 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
   }
   
   const onDelete = async (pid) =>{
-    
-    console.log(typeof(pid));
+    if(user1 !== null){
+      console.log(typeof(pid));
 
-    const dba = doc(db,user1.email,pid)
-
+      const dba = doc(db,user1.email,pid)
   
-
-    await deleteDoc(dba)
-    .then(() => {
-        console.log("Entire Document has been deleted successfully."+pid)
-        toast.success(`${product.name} has been deleted successfully!`);
-    })
-    .catch(error => {
-        console.log(error);
-    })
+    
+  
+      await deleteDoc(dba)
+      .then(() => {
+          console.log("Entire Document has been deleted successfully."+pid)
+          toast.success(`${product.name} has been deleted successfully!`);
+      })
+      .catch(error => {
+          console.log(error);
+      })
+    }
+    else{
+      console.log('error mff');
+    }
+    
 
 };
   

@@ -17,13 +17,15 @@ import {db,app} from "../../firebase/firebaseconfig"
 import toast from 'react-hot-toast';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+
 export default function NavBar() {
 
   const router = useRouter();
 
-  const {favqty, totalprice,totalQty,setTotalQty,cartItem,setqty,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
+  const {favqty, totalprice,totalQty,setTotalQty,cartItem,setqty,Favitem,setFavitem,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
 
   const [data,setdata]= useState([]);
+  const [favdata,setfavdata] = useState([]);
   
   const auth = getAuth(app);
   const [user1,setuser] = useState(null);
@@ -45,8 +47,9 @@ export default function NavBar() {
   },[]);
 
   useEffect(() =>{
-    let timer1 = setTimeout(() =>  getdata(), 5 * 1000);
-    
+    let timer1 = setTimeout(() =>  summa(), 5 * 1000);
+    getdata();
+    getFavData();
      return () => {
       clearTimeout(timer1);
     };
@@ -58,8 +61,12 @@ if(user1 === null){
 else{
     // console.log("from navbar"+user1.uid)
 }
-  
-  const getdata = async () =>{
+const summa = async () =>{
+  console.log("summa ");
+}
+
+const getdata = async () =>{
+  if(user1 !== null ){
     const querySnapshot = await getDocs(collection(db,user1.email));
     data = querySnapshot.docs.map(doc => {
       return {
@@ -69,8 +76,34 @@ else{
   } );
     setdata(data);
     setcartItem(data);
-    
   }
+  else{
+    console.log("mff");
+  }
+  
+  
+}
+
+
+
+
+const getFavData = async () =>{
+  if(user1 !== null ){
+    const querySnapshot = await getDocs(collection(db,user1.uid));
+    data = querySnapshot.docs.map(doc => {
+      return {
+          ...doc.data(),
+          id:doc.id
+         } 
+  } );
+    setfavdata(data);
+    setFavitem(data);
+
+  }
+  else{
+    console.log("mff");
+  }
+}
 
   return (
    <div>
@@ -102,7 +135,7 @@ else{
           </Nav>
           <div className="bg-[#212529] p-2">
           <button type="button" className="btn btn-danger mr-3 ml-2" onClick={()=> router.push('/favourites') }>
-              <MdFavorite className="text-2xl " /> <span className="badge badge-light">{favqty}</span>
+              <MdFavorite className="text-2xl " /> <span className="badge badge-light">{favdata.length}</span>
             </button>
             <button type="button" onClick={() =>{
                 router.push('/carts');

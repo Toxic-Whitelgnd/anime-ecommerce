@@ -80,8 +80,8 @@ export default function Authentication_Page() {
        
 
         <div className='sm:w-40 sm:ml-10 md:w-2/5 md:ml-80 border-emerald-700 border-2 p-2'>
-        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className=' mt-2 ml-20 block' onChange={(e) =>  setEmail(e.target.value)}/>
-        <input type="password" value={password} name="password" size={30} className=' mt-4 ml-20 block' placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
+        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className='sm:ml-4  md:mt-2 md:ml-20 block ' onChange={(e) =>  setEmail(e.target.value)}/>
+        <input type="password" value={password} name="password" size={30} className='sm:ml-4  mt-2 md:ml-20 block ' placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
         <Button variant="primary" type="submit" className="mt-4" onClick={ siginwithemailandpass}>
                 Signin
             </Button>
@@ -99,8 +99,8 @@ export default function Authentication_Page() {
         <h1 className='font-marker mb-4'>Signup Page</h1>
         <div className='bg-[#96ed82] mb-4'>
         <div className='sm:w-40 sm:ml-10 md:w-2/5 md:ml-80 border-emerald-700 border-2 p-2'>
-        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className=' mr-4 mt-2 ml-20 block' onChange={(e) =>  setEmail(e.target.value)}/>
-        <input type="password" value={password} className=' mt-4 ml-20 block' size={30} name="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
+        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className='sm:ml-4 sm:mb-4  md:mt-2 md:ml-20 block ' onChange={(e) =>  setEmail(e.target.value)}/>
+        <input type="password" value={password} className='sm:ml-4  md:ml-20 block mt-2 ' size={30} name="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
         <Button variant="primary" type="submit" className="mt-4" onClick={signup}>
                 Signup
             </Button>

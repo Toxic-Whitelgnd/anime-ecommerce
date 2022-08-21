@@ -17,15 +17,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default function HovCards({pimage,name,brand,price,slug,key,product}) {
     const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
     const router = useRouter();
-    // useEffect(() =>{
-    //     const cartitemrev = window.localStorage.getItem('cartitmes');
-    //     setcartItem(JSON.parse(cartitemrev));
-    // },[])
-    // useEffect(()=>{
-    //    sessionStorage.setItem("cartitmes",JSON.stringify(cartItem));
-    //     let token = sessionStorage.getItem('Token');
-    //     // console.log(token);
-    // })
+    
 
     const auth = getAuth(app);
     const cuser = auth.currentUser;
@@ -63,13 +55,36 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
     // trying by my own
    
     const pushdata = async () =>{
-        const db1Ref = collection(db,user1.email);
-        try {
-            addDoc(db1Ref,product)
-            console.log("sened successfully",db1Ref.id);
+        if(user1 !== null){
+            const db1Ref = collection(db,user1.email);
+            try {
+                addDoc(db1Ref,product)
+                console.log("sened successfully",db1Ref.id);
+            }
+            catch (e){
+                console.error("Error adding document: ", e);
+            }
         }
-        catch (e){
-            console.error("Error adding document: ", e);
+        else{
+            toast.error("Sigin to use Carts.The product will be temporarily stored in local storage")
+        }
+       
+    }
+
+    // trying for favourites
+    const pushdataFav = async () =>{
+        if(user1 !== null){
+            const db1Ref = collection(db,user1.uid);
+            try {
+                addDoc(db1Ref,product)
+                console.log("sened successfully",db1Ref.id);
+            }
+            catch (e){
+                console.error("Error adding document: ", e);
+            }
+        }
+        else{
+            toast.error("Sigin to use Favourites.The product will be temporarily stored in local storage")
         }
     }
     
@@ -100,6 +115,7 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
                 <a onClick={()=> {
                     console.log("Successfully");
                     onADDFavitem(product);
+                    pushdataFav();
                 } } className="btn btn-danger mr-4 "><MdFavorite /></a>
                <Button onClick={()=>{
                     router.push(`/product/${slug}`)

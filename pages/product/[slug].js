@@ -119,14 +119,14 @@ const ProductDetails = ({product}) => {
                       onADDtocart(product,qty,size); 
                       pushdata();
                     }} className="btn btn-warning mr-4 font-kanit"><span className="font-rajdhani">Add-to-cart</span></button>
-                    {/* <button type="button" onClick={()=>{
+                    <button type="button" onClick={()=>{
                       console.log("pressed on buynow");  
                       console.log(size); 
                       onADDtocart(product,qty,size);
                       pushdata();
                        console.log(product);
                       router.push('/carts')
-                    }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button> */}
+                    }} className="btn btn-info font-kanit"><span className="font-rajdhani">Buy-Now</span></button>
                 </div>
             </div>
             </div>

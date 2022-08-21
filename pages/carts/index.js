@@ -54,7 +54,7 @@ export default function CartItems() {
   },[]);
 
   useEffect(() =>{
-    let timer1 = setTimeout(() =>  getdata(), 1 * 1000);
+    let timer1 = setTimeout(() =>  getdatacart(), 1 * 1000);
     
      return () => {
       clearTimeout(timer1);
@@ -72,8 +72,9 @@ export default function CartItems() {
     const pid = [];
 
     
-        const getdata = async () =>{
-            const querySnapshot = await getDocs(collection(db,user1.email));
+        const getdatacart = async () =>{
+            if(user1 !== null){
+                const querySnapshot = await getDocs(collection(db,user1.email));
             querySnapshot.forEach((doc) => {
                return {
                 ...doc.data(),
@@ -91,6 +92,12 @@ export default function CartItems() {
             setdata(data);
            
             setcartItem(data);
+            console.log("what the fkk happened");
+            }
+            else{
+                toast.error("please signin to use this service");
+            }
+            
         
     
          
@@ -144,17 +151,9 @@ export default function CartItems() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='mt-24'></div>
-      {/* <div>
-        {
-            data.map( d =>(
-                <>
-                <p>{d.id}</p>
-                </>
-            ))
-        }
-      </div> */}
+      
         <div className="bg-[#eb8a8a]" ref={cartRef}>
-            <h2 className='font-silkscreen'>Your Cart (<span className='text-red-500'>{data.length}</span> Items)</h2>
+            <h2 className='font-silkscreen'>Your Cart (<span className='text-red-500'>{cartItem.length}</span> Items)</h2>
            
 
             {

@@ -145,6 +145,7 @@ export const StateConTexT = ({ children}) =>{
               toggleCartItemQuantity,
               onRemove,
               Favitem,
+              setFavitem,
               onADDFavitem,
               favqty,
               onRemoveFav,
