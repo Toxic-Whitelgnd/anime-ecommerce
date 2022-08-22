@@ -180,7 +180,7 @@ export default function CartItems() {
                         <div className="flex flex-wrap justify-center text-center bg-[#eb8a8a]">
                             
                                 <>
-                                <h1 className="font-glitch">{item.name}</h1>
+                
                                 <CartCard 
                                 name={item.name}
                                 price={item.price}
@@ -190,6 +190,7 @@ export default function CartItems() {
                                 size={item.size}
                                 pid = {item.id}
                                 index={index}
+                                slug={item.slug.current}
                                 />
                                 </>
                                 

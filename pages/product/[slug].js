@@ -1,15 +1,19 @@
 import React, { useState,useEffect } from 'react'
 import {Client,urlFor} from '../../lib/client'
-import DefaultLayout from '../../Layout/Layout'
 import {RiStarSmileFill} from "react-icons/ri" 
 import {useStateContext} from "../../context/StateConTexT";
 import Head from 'next/head'
 import {useRouter } from "next/router";
 import Form from 'react-bootstrap/Form';
 
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+
 import { collection, getDocs,addDoc } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import SizeCard from '../../components/Cards/SizeCard';
 
 const ProductDetails = ({product}) => {
     
@@ -86,19 +90,14 @@ const ProductDetails = ({product}) => {
                 </div>
                 <h4 className="mt-2 mb-3 font-kanit">Price:₹ {price}</h4>
                 <div>
-                <div className="w-36 mb-4">
-                <Form.Select aria-label="Selcet your Size" onChange={(e)=> setSize(e.target.value)} >
-                    <option value="S">Selct your Size</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </Form.Select>
+                <div className="flex">
+                <SizeCard 
+                  type={'Tsize'}
+                  product={product}
+                />
+                
                 </div>
-                <div>
-                    <h5 className="mb-2">You Selected {size} {onNewSize(product,size)} Size</h5>
-                </div>
+               
                 <h5 className="mb-2 font-kanit">Quantity</h5>
                     <button type="button" onClick={()=>{
                       console.log("pressed on plus");  

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { urlFor } from '../../lib/client';
 import getStripe from "../../lib/getStripe"
-import { Button } from 'react-bootstrap';
+import  Button  from 'react-bootstrap';
 import {useRouter} from "next/router"
 import { MdFavorite, MdShoppingCart } from "react-icons/md";
 import {BiTrash} from "react-icons/bi"
@@ -15,12 +15,15 @@ import {db,app} from "../../firebase/firebaseconfig"
 
 import toast from 'react-hot-toast';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import SizeCard from './SizeCard';
+
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 
-
-export default function CartCard({name,price,pimage,product,quantity,size,pid,index}) {
+export default function CartCard({name,price,pimage,product,quantity,slug,size,pid,index}) {
     const {totalprice,totalQty,cartItem,setShowcart,qty,onNewSize,onRemove,toggleCartItemQuantity,setcartItem} = useStateContext();
-    const [sizeo,setSizeo] = useState('S');
+   
     const router = useRouter();
 
     useEffect(() =>{
@@ -37,9 +40,10 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
       onAuthStateChanged(auth, (user) => {
           if (user) {
             // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+           
             const uid = user.uid;
             setuser(user);
+           
           } else {
             // User is signed out
             // ...
@@ -89,7 +93,8 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
         <div>
         <img src={urlFor(pimage)}  alt="cart-imag" width={250} height={250} />
         </div>
-        <Card style={{ width: '20rem',border: '1px solid' ,height: '18rem' ,backgroundColor:'#fa948c'}}>
+        {/* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */}
+        <Card style={{ width: '20rem',border: '1px solid' ,height: '20rem' ,backgroundColor:'#fa948c', boxShadow:'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px'}}>
             <Card.Body>
               <div><div className=' text-3xl sm:mt-2' onClick={()=> {
                 onDelete(pid);
@@ -97,28 +102,21 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
                 
               }  } ><BiTrash className='text-red-500 text-xl' /></div></div>
                 <Card.Title className="text-3xl capitalize"><h3 className='font-wetpaint'>{name}</h3></Card.Title>
-                <Card.Subtitle className="mb-2 text-muted font-teko">info</Card.Subtitle>
+                <Card.Subtitle onClick={()=> {router.push(`/product/${slug}`)}} className="mb-2 text-muted font-teko text-blue-500 cursor-pointer">View</Card.Subtitle>
                 <Card.Title>
                 <h6 className='text-xl font-kanit'>₹ {price}</h6>
                 </Card.Title>
                 <div className=''>
                 <Card.Title>
-                <div className="w-36">
-                <Form.Select aria-label="Selcet your Size" onChange={(e)=> setSizeo(e.target.value)} >
-                    <option value="S">Selct your Size</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </Form.Select>
+                <div>
+                  <SizeCard
+                    type={'Tsize'} //this is shoulld be dynamic as i need to update the schema
+                    product={product}
+                  />
                 </div>
-                {size === 'S'?onNewSize(product, sizeo):size}
-                {/* <h6 className='text-xl font-kanit'>{size === 'S'? sizeo : size} </h6> */}
-                {/* <h6 className='text-xl font-kanit'> {sizeo} </h6> */}
                 </Card.Title>
                 </div>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                                 <button type="button" onClick={()=>{
                                 console.log("pressed on plus");  
                                 toggleCartItemQuantity(product._id,'dec');
@@ -130,8 +128,24 @@ export default function CartCard({name,price,pimage,product,quantity,size,pid,in
                                 console.log("pressed on minus"); 
                                 toggleCartItemQuantity(product._id,'inc');
                                 }} className="btn btn-success ml-4">+</button>
+                </div> */}
+                <div>
+                <OverlayTrigger
+                    trigger="click"
+                    key="right"
+                    placement="right"
+                    overlay={
+                      <Popover>
+                        <Popover.Header as="h3">Quantity Update</Popover.Header>
+                        <Popover.Body>
+                          <strong>Quantity can be Updated!</strong> While Making a Payment!
+                        </Popover.Body>
+                      </Popover>
+                    }
+                  >
+                    <a className='ml=3 no-underline cursor-pointer text-red-500'>Note</a>
+                  </OverlayTrigger>
                 </div>
-                
             </Card.Body>
         </Card>
     </div>
