@@ -70,7 +70,7 @@ export default function  Home ({banner,products})
       <>
       <div className="mt-24">
         <div className='flex flex-row justify-around'>
-          <h2>Hello Mr {cuser === null ? 'Guest' :cuser.displayName}</h2>
+          <h2>Hello {cuser === null ? 'Guest' :cuser.displayName} 👋🏻 </h2>
           <div className='flex justify-end '>
           {cuser === null ? <Button onClick={()=>{
                     router.push(`/auth`)
