@@ -31,6 +31,13 @@
 # Day - 10
 7 hrs . Done read , write and delete on the favourite product and fixed some bugs and added new features.
 
+# Day - 11
+1 1/2 hrs . Fized the Size of tshirt ans shoes.
+
+#Day - 12
+3 hrs . Changed Firebase and added new Feature , Logout Fuctionality and Altered the Schema of the estore.
+
+#Finally Finishing My project.The app look like at the base lvl not too much High . 
 
 # Next.js + Tailwind CSS Example
 
