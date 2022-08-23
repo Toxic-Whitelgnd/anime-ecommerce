@@ -187,7 +187,7 @@ export default function CartItems() {
                                 pimage={item.image}
                                 product={item}
                                 quantity={item.quantity}
-                                size={item.size}
+                                size={item.sizeof}
                                 pid = {item.id}
                                 index={index}
                                 slug={item.slug.current}

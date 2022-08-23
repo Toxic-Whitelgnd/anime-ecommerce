@@ -36,6 +36,11 @@ export default {
         type:'string',
     },
     {
+        name:'sizeof',
+        title:'Size',
+        type:'string',
+    },
+    {
         name:'type',
         title:'Type',
         type:'string',

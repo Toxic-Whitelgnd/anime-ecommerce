@@ -31,18 +31,24 @@ export default function Authentication_Page() {
         sessionStorage.setItem('Token',res.user.accessToken);
         toast.success("created successfully")
         console.log(res.user);
-    });
+    }).catch( err => {
+      toast.error("User Already Registered");
+    });;
   }
 
   const siginwithemailandpass = ()=>{
-    signInWithEmailAndPassword(auth,email,password)
-    .then((res) =>{
-      router.push('/');
-      sessionStorage.setItem('Token',res.user.accessToken);
-      toast.success("Signed in successfully")
-      console.log(res.user);
-    });
-  }
+      signInWithEmailAndPassword(auth,email,password)
+      .then((res) =>{
+        router.push('/');
+        sessionStorage.setItem('Token',res.user.accessToken);
+        toast.success("Signed in successfully")
+        console.log(res.user);
+      }).catch( err => {
+        toast.error("User not signed in");
+      });
+    }
+    
+
 
   const signupwithgoogle = () =>{
       signInWithPopup(auth,googleprovider)

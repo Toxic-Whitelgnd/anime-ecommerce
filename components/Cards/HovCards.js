@@ -24,7 +24,7 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
 
 
     if (cuser === null){
-       console.log("no current user");
+    //    console.log("no current user");
        
     }
 
@@ -45,7 +45,7 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
         
     });
     if(user1 === null){
-        console.log("no user1 found");
+        // console.log("no user1 found");
     }
     else{
         // console.log("from hovcards"+user1.uid)

@@ -28,6 +28,11 @@ export default {
                 }
             },
             {
+                name:'sizeof',
+                title:'Size',
+                type:'string',
+            },
+            {
                 name:'name',
                 title:'Name',
                 type:'string',

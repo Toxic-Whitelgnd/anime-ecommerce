@@ -17,11 +17,10 @@ import SizeCard from '../../components/Cards/SizeCard';
 
 const ProductDetails = ({product}) => {
     
-    const {name,details,type,image,ratings,brand,price} = product;
-    const [size,setSize] = useState('S');
+    const {name,details,type,image,ratings,brand,price,sizeof} = product;
     const {decqty,incqty,qty,onADDtocart,onNewSize} = useStateContext();
     const router = useRouter();
-
+    const [size,setsize] = useState('S');
     const [data,setdata]= useState([]);
 
     const auth = getAuth(app);
@@ -91,8 +90,9 @@ const ProductDetails = ({product}) => {
                 <h4 className="mt-2 mb-3 font-kanit">Price:₹ {price}</h4>
                 <div>
                 <div className="flex">
+                 
                 <SizeCard 
-                  type={'Tsize'}
+                  type={sizeof}
                   product={product}
                 />
                 

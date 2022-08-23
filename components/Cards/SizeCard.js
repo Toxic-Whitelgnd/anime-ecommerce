@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { useStateContext } from '../../context/StateConTexT';
 
 export default function SizeCard({type,product}) {
-    const [size,setSize] = useState('S');
+    const [sizeo,setSize] = useState('S');
     const {decqty,incqty,qty,onADDtocart,onNewSize} = useStateContext();
   return (
     <>
@@ -26,7 +26,7 @@ export default function SizeCard({type,product}) {
             </Form.Select>
             </div>
                 <div>
-                    <h5 className="mb-2">You Selected {size} {onNewSize(product,size)} Size</h5>
+                    <h5 className="mb-2">You Selected {sizeo} {onNewSize(product,sizeo)} Size</h5>
                 </div>
             </div>
            )
@@ -51,7 +51,7 @@ export default function SizeCard({type,product}) {
                         </Form.Select>
                     </div>
                         <div>
-                            <h5 className="mb-2">You Selected {size} {onNewSize(product,size)} Size</h5>
+                            <h5 className="mb-2">You Selected {sizeo} {onNewSize(product,sizeo)} Size</h5>
                         </div>
              </div>
                 )

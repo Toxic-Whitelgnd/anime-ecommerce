@@ -41,6 +41,11 @@ export default {
         type:'string',
     },
     {
+        name:'sizeof',
+        title:'Size',
+        type:'string',
+    },
+    {
         name:'price',
         title:'Price',
         type:'number',

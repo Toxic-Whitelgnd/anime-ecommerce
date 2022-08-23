@@ -110,7 +110,7 @@ export default function CartCard({name,price,pimage,product,quantity,slug,size,p
                 <Card.Title>
                 <div>
                   <SizeCard
-                    type={'Tsize'} //this is shoulld be dynamic as i need to update the schema
+                    type={size} //this is shoulld be dynamic as i need to update the schema
                     product={product}
                   />
                 </div>
@@ -133,7 +133,7 @@ export default function CartCard({name,price,pimage,product,quantity,slug,size,p
                 <OverlayTrigger
                     trigger="click"
                     key="right"
-                    placement="right"
+                    placement="top"
                     overlay={
                       <Popover>
                         <Popover.Header as="h3">Quantity Update</Popover.Header>
