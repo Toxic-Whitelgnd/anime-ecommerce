@@ -139,6 +139,11 @@ export default function CartCard({name,price,pimage,product,quantity,slug,size,p
                         <Popover.Header as="h3">Quantity Update</Popover.Header>
                         <Popover.Body>
                           <strong>Quantity can be Updated!</strong> While Making a Payment!
+                          <div className='mt-3'>
+                            <h6>To test the Payment.Use this Card</h6>
+                            <b>4242 4242 4242 4242</b>
+                            <p>ExpiryMonth - <b>12/35</b> cv - <b>999</b></p>
+                          </div>
                         </Popover.Body>
                       </Popover>
                     }
