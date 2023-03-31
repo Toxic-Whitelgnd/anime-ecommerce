@@ -14,10 +14,12 @@ import { collection, getDocs,addDoc } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import SizeCard from '../../components/Cards/SizeCard';
+import SuggestionPdt from "../Suggestion"
+
 
 const ProductDetails = ({product}) => {
     
-    const {name,details,type,image,ratings,brand,price,sizeof} = product;
+    const {name,details,type,image,ratings,brand,price,sizeof,newprice} = product;
     const {decqty,incqty,qty,onADDtocart,onNewSize} = useStateContext();
     const router = useRouter();
     const [size,setsize] = useState('S');
@@ -60,6 +62,16 @@ const ProductDetails = ({product}) => {
         }
     }
 
+  
+    const ifnewprice = (price,newprice) =>{
+      return(
+        <>
+          <del>{price}</del> OffPrice ₹<span className='text-red-800'>{newprice}</span>
+        </>
+        
+      )
+    }
+
   return (
     
     <>
@@ -87,7 +99,7 @@ const ProductDetails = ({product}) => {
                 <div className="flex text-xl flex-wrap ">
                 <h6 > <RiStarSmileFill className='flex text-xl m-2 font-rajdhani' /> Ratings: {ratings} / 10  </h6>
                 </div>
-                <h4 className="mt-2 mb-3 font-kanit">Price:₹ {price}</h4>
+                <h4 className="mt-2 mb-3 font-kanit">Price:₹ {newprice?ifnewprice(price,newprice):price}</h4>
                 <div>
                 <div className="flex">
                  
@@ -134,7 +146,9 @@ const ProductDetails = ({product}) => {
 
     </div>
     </>
-    
+    <div>
+      {/* <SuggestionPdt /> */}
+    </div>
     </>
   )
 }
@@ -176,5 +190,6 @@ export async function getStaticProps ({params:{slug}}) {
   
   }
   
+ 
 
   export default ProductDetails

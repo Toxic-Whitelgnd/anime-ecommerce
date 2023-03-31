@@ -14,7 +14,7 @@ import {db,app} from "../../firebase/firebaseconfig"
 import toast from 'react-hot-toast';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-export default function HovCards({pimage,name,brand,price,slug,key,product}) {
+export default function HovCards({pimage,name,brand,price,slug,key,product,newprice}) {
     const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
     const router = useRouter();
     
@@ -59,7 +59,7 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
             const db1Ref = collection(db,user1.email);
             try {
                 addDoc(db1Ref,product)
-                console.log("sened successfully",db1Ref.id);
+                console.log("sended successfully",db1Ref.id);
             }
             catch (e){
                 console.error("Error adding document: ", e);
@@ -88,39 +88,49 @@ export default function HovCards({pimage,name,brand,price,slug,key,product}) {
         }
     }
     
-
+    const ifnewprice = (price,newprice)=>{
+        return(
+            <>
+                <del>{price}</del> new OffPrice ₹<span className='text-red-800'>{newprice}</span>
+            </>
+        )
+    }
 
   return (
         <>
-    <div className="flex flex-wrap">
-        <div className=' m-6' >
-            <div className='bg-blue border-4 w-80 h-auto p-4 border-black shadow-2xl shadow-black-500/50' key={key}>
-                <div className="mb-8 duration-500 hover:scale-150"> 
+    <div className="an-card-main flex flex-wrap">
+        <div className='an-card m-6' >
+            <div className='an-card-row bg-blue border-4 w-80 h-auto p-2 border-black shadow-2xl shadow-black-500/50' key={key}>
+                <div className="an-card-tilt mb-8 duration-500 hover:scale-150"> 
                     <Tilt>
-                        <img src={urlFor(pimage)} alt="testing" width={400} height={400} />
+                        <img src={urlFor(pimage)} className='an-card-img' alt="testing" width={400} height={400} />
                     
                     </Tilt>
                 </div>
-                <div>
-                    <h3 className="text-red-600 capitalize font-wetpaint">{name}</h3>
+                <div className='an-card-side'>
+                    <h3 className="an-card-text text-red-600 capitalize font-wetpaint">{name}</h3>
                     <p className='capitalize font-rajdhani'>Brand: <span className='font-kanit'>{brand}</span></p>
-                    <h6 className="font-lobster">Price:<span className='font-kanit'>₹ {price}</span></h6>
-                </div>
-                <div>
+
+                    <h6 className="font-lobster">Price:<span className='font-kanit ml-2'>₹{newprice?ifnewprice(price,newprice):price}</span></h6>
+
+                    <div className='an-card-btn'>
 
                 <a onClick={()=> {
                     onADDtocart(product,qty,'S');
                     pushdata();
-                }} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
+                }} className="an-card-sbtn btn btn-success justify-center mr-2"><MdShoppingCart  /></a>
                 <a onClick={()=> {
                     console.log("Successfully");
                     onADDFavitem(product);
                     pushdataFav();
-                } } className="btn btn-danger mr-4 "><MdFavorite /></a>
-               <Button onClick={()=>{
+                } } className="an-card-sbtn btn btn-danger mr-4 "><MdFavorite /></a>
+               <Button className='an-card-vbtn' onClick={()=>{
                     router.push(`/product/${slug}`)
-                }}  variant="dark">View</Button>
+                }}  variant="dark"><span id='vi'>View</span></Button>
                 </div>
+
+                </div>
+                
                 
             </div>
         </div>

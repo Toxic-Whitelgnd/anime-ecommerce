@@ -11,8 +11,9 @@ export default function Success_Order() {
     const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
 
     useEffect(() =>{
-        Order_success();
         setcartItem([]);
+        Order_success();
+        
     },[]);
     const router = useRouter();
     

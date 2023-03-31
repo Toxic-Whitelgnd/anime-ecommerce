@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import img1 from "../../images/aka.jpg"
-import img2 from "../../images/owner/xyz.png"
+import img2 from "../../images/owner/TARUN1.jpg"
 import Image from "next/image"
 
 
@@ -33,7 +33,7 @@ export default function AboutUs() {
         <h1 className="font-glitch">About owner</h1>
       </div>
       <div className='md:flex m-7'>
-        <Image src={img2} alt="aka-stores" width={400} height={800} />
+        <Image src={img2} alt="aka-stores" width={600} height={800} />
         <div className='md:block m-5'>
           <p className='font-dancing text-2xl'>Nothing to tell more about me . Lorem Ipsum is simply dummy text of the printing and 
             typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.

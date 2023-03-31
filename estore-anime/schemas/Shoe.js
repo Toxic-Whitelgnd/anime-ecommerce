@@ -51,6 +51,11 @@ export default {
         type:'number',
     },
     {
+        name:'newprice',
+        title:'OFFPrice',
+        type:'number',
+    },
+    {
         name:'ratings',
         title:'Ratings',
         type:'number',

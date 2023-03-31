@@ -61,6 +61,7 @@ export default function  Home ({banner,products,breadcrumb})
     });
   },[])
 
+  
   return (
     <div>
      
@@ -76,7 +77,7 @@ export default function  Home ({banner,products,breadcrumb})
           <h2>Hello {cuser === null ? 'Guest' :cuser.displayName} 👋🏻 </h2>
           <div className='flex justify-end '>
           {cuser === null ? <Button onClick={()=>{
-                    router.push(`/auth`)
+                    router.push(`/newauth`)
                 }}  variant="dark" className='flex place-content-end' >Login</Button> : 
                 <Button onClick={()=>{
                signoutuser() }}  variant="dark" className='flex place-content-end' >Logout</Button>}
@@ -109,13 +110,13 @@ export default function  Home ({banner,products,breadcrumb})
             <h3 className='font-silkscreen'>Browse Our top Selling Products  </h3>
             {/* {user.displayName} */}
         </div> 
-        <div className='flex ml-2 flex-row flex-wrap'>
+        <div className='flex ml-2 flex-row flex-wrap m-3'>
           {
             breadcrumb.map( b => (
               <>
               
                 <div className='bg-cyan-500 pl-3 pr-3 pt-2 mr-2 mt-3  w-auto h-10 rounded-3xl'>
-                      <a onClick={()=> router.push(`/${b.path.current}`)} className='text-center no-underline text-lg hover:text-red-500 hover:cursor-default'>{b.productcategory}</a>
+                      <a onClick={()=> router.push(`/${b.path.current}`)} className='text-center no-underline text-red-600 font-medium text-lg hover:text-red-500 hover:cursor-default'>{b.productcategory}</a>
                 </div>
               
               </>
@@ -123,7 +124,7 @@ export default function  Home ({banner,products,breadcrumb})
           }
         </div>  
         {/* <div className="grid col-start-1 col-end-2 grid-cols-3 justify-evenly m-10 bg-[#eb8a8a]"> */}
-        <div className="bg-[#eb8a8a] flex justify-center flex-wrap  m-3 ">
+        <div className="an-back bg-[#eb8a8a] flex justify-center flex-wrap  ">
         {
           
           products.map(product => (
@@ -141,6 +142,7 @@ export default function  Home ({banner,products,breadcrumb})
             ))
 
         }
+       
         </div>
         
         

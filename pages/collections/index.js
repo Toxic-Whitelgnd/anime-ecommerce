@@ -20,14 +20,14 @@ export default function Anime_Colletion({collec}) {
         </div>
         <>
         {/* <div className="grid col-start-1 col-end-2 grid-cols-2  justify-evenly m-10 bg-[#eb8a8a]"> */}
-        <div className="bg-[#eb8a8a] flex flex-wrap gap-x-16 gap-y-20 m-3 mt-4  ">
+        <div className="an-back bg-[#eb8a8a] flex flex-wrap gap-x-16 gap-y-20 mt-4  ">
         {
             collec.map(c =>(
                 <>
                 {/* <div className="flex justify-center text-center"> */}
                 <div className="bg-[#5DBE9B] sm:w-96 h-42  md:h-40 m-6 w-80 border-2   border-stone-500 rounded-xl ">
                     <h3 className="m-2 font-lobster"><span className='text-red-700 font-marker'>{c.name}</span> Collections</h3>
-                    <div className='float-right realtive -mt-32 -mr-36' >
+                    <div className='cn-card-img float-right realtive -mt-32 -mr-36' >
                     <img src={urlFor(c.image)} alt="colletion-images"  width={250} height={250} />
                     </div>
                     <h6 className="m-2 flex-wrap-reverse font-kanit">{c.products}</h6>
