@@ -14,10 +14,11 @@ import { collection, getDocs,addDoc } from "firebase/firestore";
 import {db,app} from "../../firebase/firebaseconfig"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import SizeCard from '../../components/Cards/SizeCard';
-import SuggestionPdt from "../Suggestion"
+import SuggestionPdt from '.';
+import SuggestionCard from '../../components/Cards/SuggestionCard';
 
 
-const ProductDetails = ({product}) => {
+const ProductDetails = ({product,suggpdt}) => {
     
     const {name,details,type,image,ratings,brand,price,sizeof,newprice} = product;
     const {decqty,incqty,qty,onADDtocart,onNewSize} = useStateContext();
@@ -147,7 +148,27 @@ const ProductDetails = ({product}) => {
     </div>
     </>
     <div>
-      {/* <SuggestionPdt /> */}
+    <div className='sugg'>
+            <div> 
+                <h1 className='font-silkscreen'>You may also like</h1>
+            </div>
+            <div className='best-product'>
+               {
+                suggpdt?.map((p) => (
+                    <SuggestionCard
+                    price={p.price}
+                    newprice={p.newprice}
+                    name={p.name}
+                    pimage={p.image}
+                    slug={p.slug.current}
+                    />
+                ))
+               }
+
+               
+            </div>
+
+        </div>
     </div>
     </>
   )
@@ -177,14 +198,23 @@ export const getStaticPaths = async()=>{
 
 export async function getStaticProps ({params:{slug}}) {
 
+    
   
     const pquery = `*[_type in ["products","banner","shoe","jacket","tshirt","onepiece","naruto","aot","deomonslayer"] && slug.current == '${slug}'][0]`;
     const product = await Client.fetch(pquery);
+
+    const p1query = '*[_type == "products"]';
+    const suggpdt = await Client.fetch(p1query);
+
+    
+
+    console.log(suggpdt)
   
     return{
       props: {
         
-        product
+        product,
+        suggpdt
       }
     }
   

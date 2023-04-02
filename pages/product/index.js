@@ -2,13 +2,13 @@ import React from 'react';
 import SuggestionCard from '../../components/Cards/SuggestionCard';
 import { Client } from '../../lib/client';
 
-
+// note it is not being used 
 
 export default function SuggestionPdt({products1}){
 
     return (
-        <div>
-            <div>
+        <div className='sugg'>
+            <div> 
                 <h1>You may also like</h1>
             </div>
             <div className='best-product'>

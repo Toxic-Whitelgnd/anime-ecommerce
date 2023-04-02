@@ -95,7 +95,7 @@ export default function Favourites_item() {
                 }
             </div>
             
-                <div className="an-back bg-[#] flex flex-wrap justify-center">
+                <div className="an-back bg-[#eb8a8a] flex flex-wrap justify-center">
                 {
                     Favitem.length >= 1 && Favitem.map((item)=>(
                         <>

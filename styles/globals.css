@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.sugg{
+  margin-top: 90px;
+  /* background-color: #003366; */
+}
+
 .best-product{
     overflow-x: scroll;
     overflow-y: hidden;
