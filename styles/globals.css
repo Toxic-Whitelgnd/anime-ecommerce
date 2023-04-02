@@ -199,13 +199,16 @@
     }
     .an-card{
       height: auto;
-      width: 130px;
+      min-width: 130px;
       padding: 3px !important;
+      
+      
     }
     .an-card-img{
       margin-top: 5px;
       height: 120px;
       width: 150px;
+
     }
     .an-card-row{
       display: flex;
