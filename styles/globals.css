@@ -196,6 +196,7 @@
     .an-card-main{
       padding: 3px !important;
       margin-top: -35px !important;
+      margin-left: 22px;
     }
     .an-card{
       height: auto;

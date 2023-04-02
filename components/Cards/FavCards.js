@@ -85,35 +85,38 @@ export default function FavCards({pimage,pid,name,brand,price,slug,key,product})
 
   return (
         <>
-    <div className="flex flex-wrap">
-        <div className=' m-6' >
-            <div className='bg-blue border-4 w-80 h-auto p-4 border-black shadow-2xl shadow-black-500/50' key={key}>
-                <div className="mb-8 duration-500 hover:scale-150"> 
+    <div className="an-card-main flex flex-wrap">
+        <div className='an-card m-6' >
+            <div className='an-card-row bg-blue border-4 w-80 h-auto p-4 border-black shadow-2xl shadow-black-500/50' key={key}>
+                <div className="an-card-tilt mb-8 duration-500 hover:scale-150"> 
                     <Tilt>
                         <img src={urlFor(pimage)} alt="testing" width={400} height={400} />
                     
                     </Tilt>
                 </div>
-                <div>
+                <div className='an-card-side'>
                     <h3 className="text-red-600 font-wetpaint">{name}</h3>
                     <p className='capitalize font-rajdhani'>Brand: <span className='font-kanit'>{brand}</span></p>
                     <h6 className="font-lobster">Price:<span className='font-kanit'>₹ {price}</span></h6>
-                </div>
-                <div>
 
-                <a onClick={()=> {
+                    <div className='an-card-btn'>
+                    <a onClick={()=> {
                     onADDtocart(product,qty,'S')
                     pushdata();
-                }} className="btn btn-success  mr-2"><MdShoppingCart  /></a>
+                }} className="an-card-sbtn btn btn-success  mr-2"><MdShoppingCart  /></a>
                 <a onClick={()=> {
                     onRemoveFav(product)
                     onDelete(pid);
-                }} className="btn btn-danger  mr-2"><BiTrash  /></a>
+                }} className="an-card-sbtn btn btn-danger  mr-2"><BiTrash  /></a>
                
-               <Button onClick={()=>{
+               <Button className='an-card-vbtn' onClick={()=>{
                     router.push(`/product/${slug}`)
                 }}  variant="dark">View</Button>
                 </div>
+
+                </div>
+
+               
                 
             </div>
         </div>
