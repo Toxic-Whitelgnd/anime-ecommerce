@@ -8,10 +8,14 @@ import { useStateContext } from '../context/StateConTexT';
 
 export default function Success_Order() {
 
-    const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem} = useStateContext();
+    const {onADDtocart,qty,favqty,onADDFavitem,cartItem,setcartItem,setTotalQty,
+        setTotalprice,} = useStateContext();
 
     useEffect(() =>{
         setcartItem([]);
+        setTotalQty(0);
+        setTotalprice(0);
+        // actually it will be stored in the database so we have to remove from the firebase database 
         Order_success();
         
     },[]);

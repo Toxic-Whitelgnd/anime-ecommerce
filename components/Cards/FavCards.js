@@ -45,7 +45,7 @@ export default function FavCards({pimage,pid,name,brand,price,slug,key,product})
             const db1Ref = collection(db,user1.email);
             try {
                 addDoc(db1Ref,product)
-                console.log("sened successfully",db1Ref.id);
+                console.log("sended successfully",db1Ref.id);
             }
             catch (e){
                 console.error("Error adding document: ", e);
