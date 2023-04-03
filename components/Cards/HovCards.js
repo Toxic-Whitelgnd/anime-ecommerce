@@ -74,6 +74,7 @@ export default function HovCards({pimage,name,brand,price,slug,key,product,newpr
     // trying for favourites
     const pushdataFav = async () =>{
         if(user1 !== null){
+            // iam sending to userid bez\coz to avoid confusion
             const db1Ref = collection(db,user1.uid);
             try {
                 addDoc(db1Ref,product)

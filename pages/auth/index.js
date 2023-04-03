@@ -74,39 +74,44 @@ export default function Authentication_Page() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <div className="mt-24"></div>
-    <div className="text-center">
+    <div className="text-center bg-red-300">
     <Tabs
       defaultActiveKey="login"
       id="uncontrolled-tab-example"
-      className="mb-3  justify-center"
+      className="lsauth mb-3  justify-center bg-red-300"
     >
-      <Tab eventKey="login" title="Login">
-      <h1 className='font-marker mb-4'>Login Page</h1>
-        <div className='bg-[#96ed82] mb-4'>
+      <Tab eventKey="login" title="Login" className='bg-red-300'>
+      <h1 className='bg-red-300 font-marker mb-4'>Login Page</h1>
+        <div className='bg-red-300 mb-4'>
        
-
+  
         <div className='sm:w-40 sm:ml-10 md:w-2/5 md:ml-80 border-emerald-700 border-2 p-2'>
-        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className='sm:ml-4  md:mt-2 md:ml-20 block ' onChange={(e) =>  setEmail(e.target.value)}/>
-        <input type="password" value={password} name="password" size={30} className='sm:ml-4  mt-2 md:ml-20 block ' placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
+        <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) =>  setEmail(e.target.value)}/>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+        <input type="password" value={password} name="password" size={30} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
         <Button variant="primary" type="submit" className="mt-4" onClick={ siginwithemailandpass}>
-                Signin
+                Login
             </Button>
           <h5>OR</h5>
             <Button variant="primary" type="submit" onClick={signupwithgoogle}>
-                Signin with google
+                Login with google
             </Button>
         </div>
         </div>
+        
 
         
 
       </Tab>
-      <Tab eventKey="signup" title="Signup">
-        <h1 className='font-marker mb-4'>Signup Page</h1>
-        <div className='bg-[#96ed82] mb-4'>
+      <Tab eventKey="signup" title="Signup" className='bg-red-300'>
+        <h1 className='font-marker mb-4 bg-red-300'>Signup Page</h1>
+        <div className='bg-red-300 mb-4'>
         <div className='sm:w-40 sm:ml-10 md:w-2/5 md:ml-80 border-emerald-700 border-2 p-2'>
-        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className='sm:ml-4 sm:mb-4  md:mt-2 md:ml-20 block ' onChange={(e) =>  setEmail(e.target.value)}/>
-        <input type="password" value={password} className='sm:ml-4  md:ml-20 block mt-2 ' size={30} name="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <input type="email" placeholder="Enter email" value={email} name="email" size={30} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) =>  setEmail(e.target.value)}/>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+        <input type="password" value={password} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" size={30} name="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
         <Button variant="primary" type="submit" className="mt-4" onClick={signup}>
                 Signup
             </Button>

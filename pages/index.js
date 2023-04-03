@@ -77,7 +77,7 @@ export default function  Home ({banner,products,breadcrumb})
           <h2>Hello {cuser === null ? 'Guest' :cuser.displayName} 👋🏻 </h2>
           <div className='flex justify-end '>
           {cuser === null ? <Button onClick={()=>{
-                    router.push(`/newauth`)
+                    router.push(`/auth`)
                 }}  variant="dark" className='flex place-content-end' >Login</Button> : 
                 <Button onClick={()=>{
                signoutuser() }}  variant="dark" className='flex place-content-end' >Logout</Button>}

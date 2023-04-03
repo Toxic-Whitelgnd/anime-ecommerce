@@ -42,8 +42,10 @@ export default function FavCards({pimage,pid,name,brand,price,slug,key,product})
     // this is for pushing the data into the cart if user likes
     const pushdata = async () =>{
         if(user1 !== null){
+            
             const db1Ref = collection(db,user1.email);
             try {
+                console.log("in favcards:"+user1.email)
                 addDoc(db1Ref,product)
                 console.log("sended successfully",db1Ref.id);
             }
