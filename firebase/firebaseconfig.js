@@ -11,6 +11,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDDB_W6g-uSRuJhnR1MDnhLhR5kOU1VpeA",
   authDomain: "aka-stores-b53da.firebaseapp.com",
   projectId: "aka-stores-b53da",
+  databaseURL: "https://aka-stores-b53da-default-rtdb.firebaseio.com",
   storageBucket: "aka-stores-b53da.appspot.com",
   messagingSenderId: "308714417596",
   appId: "1:308714417596:web:ea7f353f2edf80087dcfb9",

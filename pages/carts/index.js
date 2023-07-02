@@ -71,7 +71,8 @@ export default function CartItems() {
     const [sizeo,setSizeo] = useState('S');
     const pid = [];
 
-    
+        // let me  create a push the order items into the databse witht he collection name as orders-> useremail
+
         const getdatacart = async () =>{
             if(user1 !== null){
                 const querySnapshot = await getDocs(collection(db,user1.email));

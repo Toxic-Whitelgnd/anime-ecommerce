@@ -28,14 +28,14 @@ export default function CartCard({name,price,pimage,product,quantity,slug,size,p
 
     useEffect(() =>{
       console.log(cartItem.length);
-      
+      console.log(pid)
   },[]);
 
   const [data,setdata]= useState([]);
 
   const auth = getAuth(app);  
   const [user1,setuser] = useState(null);
-
+  
   useEffect(() =>{
       onAuthStateChanged(auth, (user) => {
           if (user) {

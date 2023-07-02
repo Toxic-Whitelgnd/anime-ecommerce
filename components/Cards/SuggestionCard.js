@@ -25,10 +25,10 @@ const SuggestionCard = ({newprice,price,name,pimage,slug}) => {
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
-                        <h5 class="text-xl font-semibold text-capitalize tracking-tight text-gray-900 dark:text-white">{name?name:"Product name"}</h5>
+                        <h5 class="text-xl font-semibold text-capitalize tracking-tight text-gray-900 ">{name?name:"Product name"}</h5>
                     </a>
                     <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-gray-900 dark:text-white mr-3">₹{newprice?ifnewprice(price,newprice):price}</span> 
+                        <span class="text-2xl font-bold text-gray-900  mr-3">₹{newprice?ifnewprice(price,newprice):price}</span> 
                         {/*  */}
                         <Button onClick={()=>{
                             Router.push(`/product/${slug}`)
